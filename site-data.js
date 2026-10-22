@@ -28,7 +28,7 @@ const SITE_DATA = {
   projects: [
     {
       id:"queueup", title:"QueueUp", category:"Full-stack web application", label:"TEAM PROJECT · IMD 2900",
-      image:"assets/projects/queueup.png",
+      image:"assets/projects/download.png",
       shortDescription:"A Django gaming lobby platform where users can discover, create, join, and manage gaming lobbies.",
       description:"QueueUp is a full-stack web application developed collaboratively with Django. Users can discover gaming lobbies, create their own groups, apply to join others, manage requests, and communicate through lobby chat.",
       contribution:"I worked collaboratively with the project team while gaining experience with how Django templates, views, routing, models, and user interactions work together.",
