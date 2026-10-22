@@ -58,34 +58,6 @@ const SITE_DATA = {
       live:""
     },
     {
-      id:"brewroute",
-      title:"BrewRoute Coffee",
-      category:"Web",
-      label:"WEB PROJECT",
-      image:"",
-      shortDescription:"A coffee-focused web project built around a clean, interactive user experience.",
-      description:"A web development project focused on presenting coffee-related content through an organized interface and responsive layout.",
-      contribution:"Worked on the web interface and overall project experience.",
-      tags:["HTML","CSS","JavaScript","Web"],
-      features:["Responsive interface","Structured content layout","Interactive front-end elements"],
-      github:"https://github.com/arajihussein28-hash/BrewRouteCoffee",
-      live:""
-    },
-    {
-      id:"one-piece",
-      title:"One Piece Card Game",
-      category:"Software",
-      label:"INTERACTIVE PROJECT",
-      image:"",
-      shortDescription:"An interactive programming project focused on card-game rules and game-state logic.",
-      description:"A programming project inspired by the One Piece Card Game. It helped me practice translating rules, player actions, and state changes into working program behaviour.",
-      contribution:"Worked on implementing and organizing the game logic.",
-      tags:["Programming","Game Logic","Software"],
-      features:["Player actions","Game-state logic","Rule-driven behaviour"],
-      github:"https://github.com/arajihussein28-hash/ONE_PIECE_CARD_GAME",
-      live:""
-    },
-    {
       id:"gamefeast",
       title:"GameFeast",
       category:"Software",
