@@ -102,3 +102,14 @@ window.addEventListener("scroll",()=>topBtn.classList.toggle("visible",window.sc
 topBtn.addEventListener("click",()=>window.scrollTo({top:0,behavior:"smooth"}));
 
 document.getElementById("year").textContent=new Date().getFullYear();
+window.addEventListener("load", () => {
+
+  const loader = document.getElementById("loader");
+
+  setTimeout(() => {
+
+    loader.classList.add("hide");
+
+  }, 2000);
+
+});
