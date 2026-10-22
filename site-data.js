@@ -34,7 +34,7 @@ const SITE_DATA = {
       contribution:"I worked collaboratively with the project team while gaining experience with how Django templates, views, routing, models, and user interactions work together.",
       tags:["Python","Django","HTML","CSS","Full Stack"],
       features:["User accounts and authentication","Lobby discovery","Create and manage lobbies","Join requests","Lobby chat"],
-      github:"https://github.com/vinit-rao/queueup-django", live:""
+      github:"https://github.com/vinit-rao/queueup-django", live:"https://queueup-bigteam.onrender.com/"
     },
     {
       id:"one-piece", title:"One Piece Card Game", category:"Interactive programming project", label:"SOFTWARE PROJECT",
