@@ -1,123 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Hussein Araji — Computer Science student at Carleton University focused on Artificial Intelligence, Machine Learning, and software development." />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Hussein Araji — Computer Science, AI/ML, and software development portfolio.">
   <title>Hussein Araji | Computer Science & AI</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="site-header">
     <nav class="nav shell">
-      <a class="brand" href="#top"><span class="brand-mark">HA</span><span class="brand-name">Hussein Araji</span></a>
-      <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false"><span></span><span></span></button>
+      <a class="brand" href="#top"><span class="brand-mark">HA</span><span>Hussein Araji</span></a>
+      <button id="menuToggle" class="menu-toggle" aria-label="Open navigation"><span></span><span></span></button>
       <div class="nav-links" id="navLinks">
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#experience">Experience</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-        <a class="nav-cta" href="resume.pdf" target="_blank">Resume ↗</a>
+        <a href="#about">About</a><a href="#skills">Skills</a><a href="#experience">Experience</a>
+        <a href="#projects">Projects</a><a href="#contact">Contact</a>
+        <a class="nav-cta" id="resumeNav" href="resume.pdf" target="_blank">Resume ↗</a>
       </div>
     </nav>
   </header>
 
   <main id="top">
     <section class="hero shell">
-      <div class="hero-copy">
-        <div class="availability"><span class="availability-dot"></span>Open to co-op & internship opportunities</div>
-        <h1>Building software <span>and learning how intelligent systems work.</span></h1>
-        <p class="hero-intro">I'm <strong>Hussein Araji</strong>, a Computer Science student at Carleton University focused on Artificial Intelligence and Machine Learning. I enjoy building software, solving technical problems, and turning ideas into projects I can actually test and improve.</p>
+      <div>
+        <div class="availability"><span></span><p id="availabilityText"></p></div>
+        <p class="eyebrow">COMPUTER SCIENCE · AI / ML</p>
+        <h1>Building software <span>and learning intelligent systems.</span></h1>
+        <p class="hero-intro" id="heroIntro"></p>
         <div class="hero-actions">
-          <a class="primary-button" href="#projects">View my projects <span>↘</span></a>
-          <a class="secondary-button" href="mailto:arajihussein28@gmail.com">Contact me</a>
+          <a class="primary-btn" href="#projects">View my projects ↘</a>
+          <a class="secondary-btn" id="emailButton" href="#">Contact me</a>
         </div>
-        <div class="hero-meta">
-          <div><span class="meta-label">Based in</span><strong>Ottawa, Canada</strong></div>
-          <div><span class="meta-label">Studying</span><strong>Computer Science · AI/ML</strong></div>
-          <div><span class="meta-label">Currently</span><strong>Building & learning</strong></div>
-        </div>
+        <div class="hero-meta" id="heroMeta"></div>
       </div>
 
-      <div class="hero-visual" aria-hidden="true">
+      <div class="hero-visual">
         <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
-        <div class="profile-core"><span class="core-small">CS</span><strong>HA</strong><span>AI / ML</span></div>
-        <div class="floating-tag tag-one">&lt;/&gt; Java</div><div class="floating-tag tag-two">Python</div><div class="floating-tag tag-three">C</div><div class="floating-tag tag-four">Git</div>
+        <div class="profile-core"><small>CS</small><strong>HA</strong><span>AI / ML</span></div>
+        <div class="float-tag t1">Java</div><div class="float-tag t2">Python</div>
+        <div class="float-tag t3">C</div><div class="float-tag t4">Git</div>
       </div>
     </section>
 
-    <section class="tech-strip"><div class="marquee"><div class="marquee-track">
-      <span>Python</span><i>◆</i><span>Java</span><i>◆</i><span>C</span><i>◆</i><span>JavaScript</span><i>◆</i><span>HTML & CSS</span><i>◆</i><span>Git & GitHub</span><i>◆</i><span>Linux</span><i>◆</i><span>Data Structures</span><i>◆</i><span>Algorithms</span><i>◆</i>
-      <span>Python</span><i>◆</i><span>Java</span><i>◆</i><span>C</span><i>◆</i><span>JavaScript</span><i>◆</i><span>HTML & CSS</span><i>◆</i><span>Git & GitHub</span><i>◆</i><span>Linux</span><i>◆</i><span>Data Structures</span><i>◆</i><span>Algorithms</span><i>◆</i>
-    </div></div></section>
+    <section class="tech-strip"><div class="marquee"><div class="marquee-track" id="techMarquee"></div></div></section>
 
     <section class="section shell" id="about">
       <div class="section-kicker"><span>01</span><p>About me</p></div>
-      <div class="about-grid">
+      <div class="two-col">
         <h2>I like understanding <span>what happens under the hood.</span></h2>
-        <div class="about-copy">
-          <p>I'm studying Computer Science at Carleton University with a focus on Artificial Intelligence and Machine Learning. My coursework is strengthening my foundation in programming, algorithms, data structures, systems programming, and discrete mathematics.</p>
-          <p>Before moving into Computer Science, I studied Interactive Multimedia and Design. That gave me hands-on experience with web development, interface design, Arduino, electronics, and interactive projects.</p>
-          <p>My goal now is to keep building stronger projects, improve as a programmer, and gain real software or AI/ML experience through co-op and internships.</p>
-        </div>
+        <div class="copy" id="aboutCopy"></div>
       </div>
     </section>
 
-    <section class="section skill-section" id="skills"><div class="shell">
-      <div class="section-kicker"><span>02</span><p>Skills & focus</p></div>
-      <div class="section-heading"><div><p class="eyebrow">WHAT I'M WORKING WITH</p><h2>Technical foundation</h2></div><p>I prefer showing the tools and concepts I actually work with instead of giving myself arbitrary percentage ratings.</p></div>
-      <div class="skill-grid">
-        <article class="skill-card featured-skill"><span class="skill-index">A</span><h3>Programming</h3><p>Building my core problem-solving skills through Java, C, Python, and JavaScript.</p><div class="tag-row"><span>Java</span><span>C</span><span>Python</span><span>JavaScript</span></div></article>
-        <article class="skill-card"><span class="skill-index">B</span><h3>Computer Science</h3><p>Data structures, algorithms, object-oriented programming, discrete mathematics, and systems concepts.</p><div class="tag-row"><span>Algorithms</span><span>OOP</span><span>Data Structures</span></div></article>
-        <article class="skill-card"><span class="skill-index">C</span><h3>Development</h3><p>Building and debugging projects using the command line, Linux, Git, GitHub, HTML, and CSS.</p><div class="tag-row"><span>Git</span><span>GitHub</span><span>Linux</span><span>Web</span></div></article>
-        <article class="skill-card"><span class="skill-index">D</span><h3>Current direction</h3><p>Growing toward AI and machine learning while continuing to strengthen general software engineering skills.</p><div class="tag-row"><span>AI</span><span>Machine Learning</span><span>Software</span></div></article>
+    <section class="section dark-section" id="skills">
+      <div class="shell">
+        <div class="section-kicker"><span>02</span><p>Skills & focus</p></div>
+        <div class="section-heading"><div><p class="eyebrow">WHAT I'M WORKING WITH</p><h2>Technical foundation</h2></div></div>
+        <div class="skill-grid" id="skillGrid"></div>
       </div>
-    </div></section>
+    </section>
 
     <section class="section shell" id="experience">
       <div class="section-kicker"><span>03</span><p>Career path</p></div>
-      <div class="section-heading"><div><p class="eyebrow">EXPERIENCE & EDUCATION</p><h2>Where I've been</h2></div><p>A mix of customer-facing work, university study, and technical projects that shaped how I work with people and solve problems.</p></div>
-      <div class="timeline">
-        <article class="timeline-row"><div class="timeline-date">Current</div><div class="timeline-content"><span class="timeline-type">Education</span><h3>Computer Science — AI & Machine Learning</h3><p class="timeline-place">Carleton University · Ottawa, ON</p><p>Building a strong foundation in programming, algorithms, data structures, systems programming, and mathematics while preparing for software and AI/ML co-op opportunities.</p></div></article>
-        <article class="timeline-row"><div class="timeline-date">Current</div><div class="timeline-content"><span class="timeline-type">Work</span><h3>Store Team Member</h3><p class="timeline-place">Food Basics · Ottawa, ON</p><p>Support customers, stock and organize merchandise, and work with the store team in a fast-paced environment.</p></div></article>
-        <article class="timeline-row"><div class="timeline-date">Previous</div><div class="timeline-content"><span class="timeline-type">Work</span><h3>Retail & Customer Service</h3><p class="timeline-place">Shoppers Drug Mart</p><p>Developed customer service experience involving cash handling, stocking, store operations, teamwork, and helping train staff.</p></div></article>
-        <article class="timeline-row"><div class="timeline-date">Previous</div><div class="timeline-content"><span class="timeline-type">Education</span><h3>Interactive Multimedia & Design</h3><p class="timeline-place">Carleton University</p><p>Worked with web development, visual design, interactive systems, electronics, Arduino, and physical computing before transitioning into Computer Science.</p></div></article>
-      </div>
+      <div class="section-heading"><div><p class="eyebrow">EXPERIENCE & EDUCATION</p><h2>Where I've been</h2></div></div>
+      <div class="timeline" id="timeline"></div>
     </section>
 
-    <section class="section project-section" id="projects"><div class="shell">
-      <div class="section-kicker"><span>04</span><p>Selected work</p></div>
-      <div class="section-heading"><div><p class="eyebrow">PROJECTS</p><h2>Things I've built</h2></div><a class="inline-link" href="https://github.com/arajihussein28-hash" target="_blank" rel="noopener">View GitHub ↗</a></div>
-      <div class="project-grid">
-        <article class="project-card project-card-large"><div class="project-card-top"><span>01 / WEB</span><a href="https://github.com/arajihussein28-hash/BrewRouteCoffee" target="_blank" rel="noopener">↗</a></div><div class="project-art coffee-art"><div class="project-window"><span></span><span></span><span></span></div><strong>BREW<br>ROUTE</strong></div><h3>BrewRoute Coffee</h3><p>A web project focused on creating a clear, interactive experience around coffee content and interface design.</p><div class="tag-row"><span>Web Development</span><span>UI</span></div></article>
-        <article class="project-card"><div class="project-card-top"><span>02 / INTERACTIVE</span><a href="https://github.com/arajihussein28-hash/ONE_PIECE_CARD_GAME" target="_blank" rel="noopener">↗</a></div><div class="project-art card-art"><div class="playing-card"><small>GAME</small><strong>01</strong><small>LOGIC</small></div></div><h3>One Piece Card Game</h3><p>An interactive project centered around card-game rules, player actions, and turning game logic into program behaviour.</p><div class="tag-row"><span>Programming</span><span>Game Logic</span></div></article>
-        <article class="project-card"><div class="project-card-top"><span>03 / SOFTWARE</span><a href="https://github.com/arajihussein28-hash/Gamefeastfinal" target="_blank" rel="noopener">↗</a></div><div class="project-art game-art"><div class="game-grid"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div></div><h3>GameFeast</h3><p>A software project where I worked on organizing features and creating an interactive experience around the core idea.</p><div class="tag-row"><span>Software</span><span>Interactive</span></div></article>
-        <article class="project-card future-card"><div class="project-card-top"><span>04 / NEXT</span><span>IN PROGRESS</span></div><div class="project-art ai-art"><div class="ai-node">AI</div><span class="mini-node node-a"></span><span class="mini-node node-b"></span><span class="mini-node node-c"></span></div><h3>AI / ML Project</h3><p>This spot is reserved for a stronger AI or machine-learning project as I move further into my specialization.</p><div class="tag-row"><span>Python</span><span>AI / ML</span></div></article>
+    <section class="section dark-section" id="projects">
+      <div class="shell">
+        <div class="section-kicker"><span>04</span><p>Selected work</p></div>
+        <div class="section-heading project-heading">
+          <div><p class="eyebrow">PROJECTS</p><h2>Things I've built</h2></div>
+          <a class="text-link" id="githubLink" href="#" target="_blank">View GitHub ↗</a>
+        </div>
+        <div class="project-controls"><div id="projectFilters" class="filters"></div><p>Click a project for details.</p></div>
+        <div class="project-grid" id="projectGrid"></div>
       </div>
-    </div></section>
+    </section>
 
     <section class="section shell">
       <div class="section-kicker"><span>05</span><p>Relevant coursework</p></div>
-      <div class="course-list">
-        <div class="course-row"><span>COMP 2401</span><strong>Systems Programming</strong><p>C, memory, pointers, structs, low-level programming</p></div>
-        <div class="course-row"><span>COMP 2402</span><strong>Abstract Data Types & Algorithms</strong><p>Data structures, algorithm analysis, implementation</p></div>
-        <div class="course-row"><span>COMP 1805</span><strong>Discrete Structures</strong><p>Logic, proofs, sets, functions, combinatorics</p></div>
-        <div class="course-row"><span>IMD 1005</span><strong>Web Development</strong><p>Web interfaces and front-end development</p></div>
-        <div class="course-row"><span>BIT 2006</span><strong>Electronics & Physical Computing</strong><p>Arduino, electronics, sensors, serial communication</p></div>
-      </div>
+      <div class="course-list" id="courseList"></div>
     </section>
 
-    <section class="contact-section" id="contact"><div class="shell contact-grid">
-      <div><p class="contact-kicker">LET'S CONNECT</p><h2>Have an opportunity <span>or project in mind?</span></h2></div>
-      <div class="contact-panel"><p>I'm interested in co-op and internship opportunities in software development, AI/ML, and related technical roles.</p><a class="email-link" href="mailto:arajihussein28@gmail.com">arajihussein28@gmail.com <span>↗</span></a><div class="social-row"><a href="https://github.com/arajihussein28-hash" target="_blank" rel="noopener">GitHub ↗</a><a href="resume.pdf" target="_blank">Resume ↗</a></div></div>
-    </div></section>
+    <section class="contact-section" id="contact">
+      <div class="shell contact-grid">
+        <div><p class="eyebrow">LET'S CONNECT</p><h2>Have an opportunity <span>or project in mind?</span></h2></div>
+        <div class="contact-card">
+          <p id="contactText"></p>
+          <a id="emailLink" class="email-link" href="#"><span id="emailText"></span><span>↗</span></a>
+          <div class="social-row" id="socialRow"></div>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <footer><div class="shell footer-inner"><p>© <span id="year"></span> Hussein Araji</p><p>Designed & built by Hussein</p></div></footer>
+  <button id="backToTop" class="back-to-top" aria-label="Back to top">↑</button>
+
+  <div id="projectModal" class="project-modal" aria-hidden="true">
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-card">
+      <div class="modal-header"><span id="modalType">PROJECT</span><button data-close-modal>×</button></div>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <footer><div class="shell footer-inner"><p>© <span id="year"></span> Hussein Araji</p><p>Built by Hussein</p></div></footer>
+
+  <script src="site-data.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
