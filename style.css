@@ -7,3 +7,81 @@
 .contact-section{padding:105px 0;border-top:1px solid var(--line);background:linear-gradient(180deg,#0a0a0a,#0d0809)}.contact-grid{display:grid;grid-template-columns:1fr .8fr;gap:80px}.contact-section h2{margin-top:12px;font-size:clamp(3.2rem,6vw,6.7rem);line-height:.95;letter-spacing:-.07em}.contact-section h2 span{color:#6f6262}.contact-copy>p{color:#958c8c}.contact-email{display:flex;justify-content:space-between;gap:20px;margin-top:26px;padding:13px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.contact-links{display:flex;flex-wrap:wrap;gap:18px;margin-top:20px}.contact-links a{color:#8f8686;font-size:.8rem}
 .project-modal{position:fixed;inset:0;z-index:5000;display:none;align-items:center;justify-content:center;padding:22px}.project-modal.open{display:flex}.modal-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.84);backdrop-filter:blur(8px)}.modal-card{position:relative;width:min(900px,100%);max-height:90vh;overflow-y:auto;border:1px solid var(--line);border-radius:15px;background:#0c0c0c}.modal-top{position:sticky;top:0;z-index:5;min-height:66px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;border-bottom:1px solid var(--line);background:rgba(12,12,12,.96)}.modal-top>span{color:var(--bright);font:400 .62rem "DM Mono"}.modal-top button{border:0;background:transparent;color:#9e9696;font-size:1.8rem;cursor:pointer}.modal-body{padding:36px}.modal-body h2{font-size:clamp(3rem,6vw,5.5rem);line-height:.95;letter-spacing:-.065em}.modal-category{margin-top:8px;color:#746c6c}.modal-image{width:100%;max-height:480px;object-fit:cover;margin-top:28px;border:1px solid var(--line);border-radius:11px}.modal-placeholder{min-height:300px;display:grid;place-items:center;margin-top:28px;border:1px solid var(--line);border-radius:11px;color:var(--bright);font-size:clamp(2.8rem,6vw,5rem);font-weight:700}.modal-lead{margin-top:28px;color:#aaa1a1;font-size:1.02rem}.modal-detail{display:grid;gap:28px;margin-top:30px}.modal-detail h3{margin-bottom:7px;font-size:1rem}.modal-detail p,.modal-detail li{color:#837b7b}.modal-detail ul{padding-left:18px}.modal-links{display:flex;flex-wrap:wrap;gap:9px;margin-top:28px;padding-top:24px;border-top:1px solid var(--line)}.modal-links a{padding:9px 13px;border:1px solid var(--line);border-radius:7px;font-size:.8rem}.modal-links a.primary{background:var(--red);border-color:var(--red)}.back-to-top{position:fixed;right:18px;bottom:18px;z-index:900;width:42px;height:42px;border:1px solid var(--line);border-radius:50%;background:#111;color:#fff;opacity:0;pointer-events:none;transition:.2s}.back-to-top.visible{opacity:1;pointer-events:auto}footer{border-top:1px solid var(--line)}.footer-inner{min-height:78px;display:flex;align-items:center;justify-content:space-between;color:#5f5959;font-size:.7rem}
 @media(max-width:900px){.hero{grid-template-columns:1fr;gap:40px}.hero-mark-wrap{align-items:flex-start}.hero-mark{width:270px}.about-grid,.contact-grid{grid-template-columns:1fr;gap:48px}}@media(max-width:760px){.menu-toggle{display:block}.nav-links{position:absolute;top:74px;left:0;right:0;display:none;flex-direction:column;align-items:stretch;gap:0;padding:12px 20px 20px;border-bottom:1px solid var(--line);background:#0a0a0a}.nav-links.open{display:flex}.nav-links a{padding:11px 0}.hero{min-height:auto;padding:70px 0}.hero h1{font-size:clamp(4rem,18vw,6.5rem)}.section{padding:80px 0}.project-grid{grid-template-columns:1fr}.project-image{height:280px}.skill-row,.timeline-row{grid-template-columns:1fr;gap:10px}}@media(max-width:520px){.shell{width:min(calc(100% - 28px),var(--max))}.hero-actions{align-items:stretch;flex-direction:column}.button{width:100%}.hero-mark{width:220px;min-width:220px}.project-image{height:220px}.modal-body{padding:24px 18px}.footer-inner{flex-direction:column;align-items:flex-start;justify-content:center;gap:4px;padding:19px 0}}
+/* =========================
+   MOVING CIRCUIT LINE
+========================= */
+
+.circuit-background {
+  position: fixed;
+
+  top: 0;
+  right: 25px;
+
+  width: 140px;
+  height: 100%;
+
+  pointer-events: none;
+
+  z-index: 0;
+
+  background-image:
+    url("assets/projects/circuit-line.png");
+
+  background-repeat: repeat-y;
+
+  background-size: 140px auto;
+
+  opacity: 0.22;
+
+  filter:
+    brightness(1.4)
+    drop-shadow(0 0 5px rgba(255, 255, 255, 0.4))
+    drop-shadow(0 0 12px rgba(207, 46, 57, 0.45));
+
+  animation:
+   circuitMove 12s linear infinite,
+  circuitGlow 2.5s ease-in-out infinite alternate;
+}
+@keyframes circuitGlow {
+
+  from {
+    opacity: 0.12;
+
+    filter:
+      brightness(1.1)
+      drop-shadow(0 0 4px rgba(255,255,255,.25))
+      drop-shadow(0 0 8px rgba(207,46,57,.25));
+  }
+
+  to {
+    opacity: 0.28;
+
+    filter:
+      brightness(1.6)
+      drop-shadow(0 0 8px rgba(255,255,255,.5))
+      drop-shadow(0 0 18px rgba(207,46,57,.55));
+  }
+
+}
+
+
+/* Move the circuitry downward */
+
+@keyframes circuitMove {
+
+  from {
+    background-position-y: 0px;
+  }
+
+  to {
+    background-position-y: 800px;
+  }
+} 
+  .site-header,
+main,
+footer {
+  position: relative;
+  z-index: 2;
+}
+  
+
