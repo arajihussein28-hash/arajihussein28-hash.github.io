@@ -3,135 +3,75 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Hussein Araji — Computer Science, AI/ML, and software development portfolio.">
-  <title>Hussein Araji | Computer Science & AI</title>
+  <meta name="description" content="Hussein Araji — Computer Science student focused on AI, machine learning, and software development.">
+  <title>Hussein Araji | Computer Science</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div id="loader" class="loader"><div class="loader-logo"><span>H</span><span>A</span></div></div>
 
-  <!-- LOADER fade -->
-  <div id="loader" class="loader">
-    <div class="loader-logo">
-      <span class="loader-h">H</span>
-      <span class="loader-a">A</span>
-    </div>
-  </div>
-  
-  </header>
   <header class="site-header">
     <nav class="nav shell">
-      <a class="brand" href="#top"><span class="brand-mark">HA</span><span>Hussein Araji</span></a>
+      <a href="#top" class="brand">HA</a>
       <button id="menuToggle" class="menu-toggle" aria-label="Open navigation"><span></span><span></span></button>
       <div class="nav-links" id="navLinks">
-        <a href="#about">About</a><a href="#skills">Skills</a><a href="#experience">Experience</a>
-        <a href="#projects">Projects</a><a href="#contact">Contact</a>
-        <a class="nav-cta" id="resumeNav" href="resume.pdf" target="_blank">Resume ↗</a>
+        <a href="#projects">Work</a><a href="#about">About</a><a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#contact">Contact</a>
+        <a id="resumeNav" href="resume.pdf" target="_blank">Resume ↗</a>
       </div>
     </nav>
   </header>
 
   <main id="top">
     <section class="hero shell">
-      <div>
-        <div class="availability"><span></span><p id="availabilityText"></p></div>
+      <div class="hero-copy">
         <p class="eyebrow">COMPUTER SCIENCE · AI / ML</p>
-        <h1>Building software <span>and learning intelligent systems.</span></h1>
+        <h1>Hussein Araji</h1>
+        <p class="hero-role">Computer Science student at Carleton University focused on <span>Artificial Intelligence & Machine Learning.</span></p>
         <p class="hero-intro" id="heroIntro"></p>
         <div class="hero-actions">
-          <a class="primary-btn" href="#projects">View my projects ↘</a>
-          <a class="secondary-btn" id="emailButton" href="#">Contact me</a>
+          <a href="#projects" class="button primary-button">View projects</a>
+          <a id="githubButton" href="#" target="_blank" class="button secondary-button">GitHub ↗</a>
+          <a id="emailButton" href="#" class="button text-button">Email me</a>
         </div>
-        <div class="hero-meta" id="heroMeta"></div>
       </div>
-
-      <div class="hero-visual">
-        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
-        <div class="profile-core"><small>CS</small><strong>HA</strong><span>AI / ML</span></div>
-        <div class="float-tag t1">Java</div><div class="float-tag t2">Python</div>
-        <div class="float-tag t3">C</div><div class="float-tag t4">Git</div>
+      <div class="hero-mark-wrap">
+        <div id="heroMark" class="hero-mark"><div class="hero-mark-inner"><span class="mark-h">H</span><span class="mark-a">A</span></div></div>
+        <p>Ottawa, Canada</p>
       </div>
     </section>
 
-    <section class="tech-strip"><div class="marquee"><div class="marquee-track" id="techMarquee"></div></div></section>
+    <section class="section shell" id="projects">
+      <div class="section-head"><div><p class="section-label">01 / SELECTED WORK</p><h2>Projects</h2></div><a id="githubLink" class="small-link" href="#" target="_blank">All GitHub repositories ↗</a></div>
+      <div class="project-grid" id="projectGrid"></div>
+    </section>
 
     <section class="section shell" id="about">
-      <div class="section-kicker"><span>01</span><p>About me</p></div>
-      <div class="two-col">
-        <h2>I like understanding <span>what happens under the hood.</span></h2>
-        <div class="copy" id="aboutCopy"></div>
-      </div>
+      <div class="section-head simple-head"><div><p class="section-label">02 / ABOUT</p><h2>A little about me</h2></div></div>
+      <div class="about-grid"><p class="about-lead">I like building things, understanding how software works, and improving through projects.</p><div class="about-copy" id="aboutCopy"></div></div>
     </section>
 
-    <section class="section dark-section" id="skills">
-      <div class="shell">
-        <div class="section-kicker"><span>02</span><p>Skills & focus</p></div>
-        <div class="section-heading"><div><p class="eyebrow">WHAT I'M WORKING WITH</p><h2>Technical foundation</h2></div></div>
-        <div class="skill-grid" id="skillGrid"></div>
-      </div>
+    <section class="section shell" id="skills">
+      <div class="section-head simple-head"><div><p class="section-label">03 / SKILLS</p><h2>What I work with</h2></div></div>
+      <div class="skills-list" id="skillsList"></div>
     </section>
 
     <section class="section shell" id="experience">
-      <div class="section-kicker"><span>03</span><p>Career path</p></div>
-      <div class="section-heading"><div><p class="eyebrow">EXPERIENCE & EDUCATION</p><h2>Where I've been</h2></div></div>
+      <div class="section-head simple-head"><div><p class="section-label">04 / EXPERIENCE</p><h2>Education & work</h2></div></div>
       <div class="timeline" id="timeline"></div>
     </section>
 
-    <section class="section dark-section" id="projects">
-      <div class="shell">
-        <div class="section-kicker"><span>04</span><p>Selected work</p></div>
-        <div class="section-heading project-heading">
-          <div><p class="eyebrow">PROJECTS</p><h2>Things I've built</h2></div>
-          <a class="text-link" id="githubLink" href="#" target="_blank">View GitHub ↗</a>
-        </div>
-        <div class="project-controls"><div id="projectFilters" class="filters"></div><p>Click a project for details.</p></div>
-        <div class="project-grid" id="projectGrid"></div>
-      </div>
-    </section>
-
-    <section class="section shell">
-      <div class="section-kicker"><span>05</span><p>Relevant coursework</p></div>
-      <div class="course-list" id="courseList"></div>
-    </section>
-
-    <section class="contact-section" id="contact">
-      <div class="shell contact-grid">
-        <div><p class="eyebrow">LET'S CONNECT</p><h2>Have an opportunity <span>or project in mind?</span></h2></div>
-        <div class="contact-card">
-          <p id="contactText"></p>
-          <a id="emailLink" class="email-link" href="#"><span id="emailText"></span><span>↗</span></a>
-          <div class="social-row" id="socialRow"></div>
-        </div>
-      </div>
-    </section>
+    <section class="contact-section" id="contact"><div class="shell contact-grid">
+      <div><p class="section-label">05 / CONTACT</p><h2>Interested in working <span>together?</span></h2></div>
+      <div class="contact-copy"><p id="contactText"></p><a id="emailLink" class="contact-email" href="#"><span id="emailText"></span><span>↗</span></a><div class="contact-links" id="contactLinks"></div></div>
+    </div></section>
   </main>
 
+  <div id="projectModal" class="project-modal" aria-hidden="true"><div class="modal-backdrop" data-close-modal></div><div class="modal-card"><div class="modal-top"><span id="modalLabel">PROJECT</span><button data-close-modal aria-label="Close project">×</button></div><div id="modalBody" class="modal-body"></div></div></div>
   <button id="backToTop" class="back-to-top" aria-label="Back to top">↑</button>
-
-  <div id="projectModal" class="project-modal" aria-hidden="true">
-    <div class="modal-backdrop" data-close-modal></div>
-    <div class="modal-card">
-      <div class="modal-header"><span id="modalType">PROJECT</span><button data-close-modal>×</button></div>
-      <div class="modal-body" id="modalBody"></div>
-    </div>
-  </div>
-
   <footer><div class="shell footer-inner"><p>© <span id="year"></span> Hussein Araji</p><p>Built by Hussein</p></div></footer>
-
-  <script src="site-data.js"></script>
-  <script src="script.js"></script>
-  <script>
-  window.addEventListener("load", function () {
-    setTimeout(function () {
-      const loader = document.getElementById("loader");
-
-      if (loader) {
-        loader.classList.add("hide");
-      }
-    }, 1400);
-  });
-</script>
+  <script src="site-data.js"></script><script src="script.js"></script>
 </body>
 </html>

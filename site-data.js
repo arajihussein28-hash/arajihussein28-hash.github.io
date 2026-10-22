@@ -1,97 +1,50 @@
-/*
-EDIT THIS FILE FOR MOST FUTURE CHANGES.
-Add/remove projects, skills, experience, links, coursework, and text here.
-Usually you only need to upload THIS file after editing.
-*/
-
+/* V3: Edit this file for normal content changes. */
 const SITE_DATA = {
   profile: {
     email: "arajihussein28@gmail.com",
     github: "https://github.com/arajihussein28-hash",
     linkedin: "",
     resume: "resume.pdf",
-    availability: "Open to co-op & internship opportunities",
-    heroIntro: "I'm Hussein Araji, a Computer Science student at Carleton University focused on Artificial Intelligence and Machine Learning. I enjoy building software, solving technical problems, and turning ideas into projects I can test and improve.",
-    contactText: "I'm interested in co-op and internship opportunities in software development, AI/ML, and related technical roles.",
-    meta: [
-      { label: "Based in", value: "Ottawa, Canada" },
-      { label: "Studying", value: "Computer Science · AI/ML" },
-      { label: "Currently", value: "Building & learning" }
-    ]
+    heroIntro: "I build software, learn how systems work, and keep improving through coursework and hands-on projects.",
+    contactText: "I'm currently interested in co-op and internship opportunities in software development, AI/ML, and other technical roles."
   },
-
-  technologies: ["Python","Java","C","JavaScript","HTML & CSS","Git & GitHub","Linux","Data Structures","Algorithms","Django"],
-
   about: [
-    "I'm currently studying Computer Science at Carleton University with a focus on Artificial Intelligence and Machine Learning. My coursework is strengthening my foundation in programming, algorithms, data structures, systems programming, and discrete mathematics.",
-    "Before moving into Computer Science, I studied Interactive Multimedia and Design. That gave me hands-on experience with web development, interface design, Arduino, electronics, and interactive projects.",
-    "My goal is to keep building stronger projects, improve as a programmer, and gain real software or AI/ML experience through co-op and internships."
+    "I'm a Computer Science student at Carleton University with a focus on Artificial Intelligence and Machine Learning. My current coursework is strengthening my foundation in programming, algorithms, data structures, systems programming, and discrete mathematics.",
+    "Before moving into Computer Science, I studied Interactive Multimedia and Design. That gave me experience with web development, interface design, electronics, Arduino, and interactive projects.",
+    "Right now, I'm focused on becoming a stronger developer, building better projects, and getting real technical experience through co-op and internships."
   ],
-
   skills: [
-    { letter:"A", title:"Programming", description:"Building core problem-solving skills through Java, C, Python, and JavaScript.", tags:["Java","C","Python","JavaScript"] },
-    { letter:"B", title:"Computer Science", description:"Data structures, algorithms, OOP, discrete mathematics, and systems concepts.", tags:["Algorithms","OOP","Data Structures"] },
-    { letter:"C", title:"Development", description:"Building and debugging with Linux, Git, GitHub, HTML, CSS, and the command line.", tags:["Git","GitHub","Linux","Web"] },
-    { letter:"D", title:"Current Direction", description:"Growing toward AI and machine learning while strengthening software engineering skills.", tags:["AI","Machine Learning","Software"] }
+    {group:"Programming", items:["Python","Java","C","JavaScript"]},
+    {group:"Web & Development", items:["HTML","CSS","Django","Git","GitHub","Linux"]},
+    {group:"Computer Science", items:["Data Structures","Algorithms","OOP","Systems Programming","Discrete Mathematics"]},
+    {group:"Current Focus", items:["Artificial Intelligence","Machine Learning","Software Development"]}
   ],
-
   experience: [
-    { date:"Current", type:"Education", title:"Computer Science — AI & Machine Learning", place:"Carleton University · Ottawa, ON", description:"Building a foundation in programming, algorithms, data structures, systems programming, and mathematics while preparing for software and AI/ML co-op opportunities." },
-    { date:"Current", type:"Work", title:"Store Team Member", place:"Food Basics · Ottawa, ON", description:"Support customers, stock and organize merchandise, and work with the store team in a fast-paced environment." },
-    { date:"Previous", type:"Work", title:"Retail & Customer Service", place:"Shoppers Drug Mart", description:"Developed several years of customer service experience involving cash handling, stocking, store operations, teamwork, and helping train staff." },
-    { date:"Previous", type:"Education", title:"Interactive Multimedia & Design", place:"Carleton University", description:"Worked with web development, visual design, interactive systems, electronics, Arduino, and physical computing before transitioning into Computer Science." }
+    {date:"Current",title:"Computer Science — AI & Machine Learning",place:"Carleton University · Ottawa, ON",description:"Building a foundation in programming, algorithms, data structures, systems programming, and mathematics."},
+    {date:"Current",title:"Store Team Member",place:"Food Basics · Ottawa, ON",description:"Support customers, stock merchandise, and work with the store team in a fast-paced environment."},
+    {date:"Previous",title:"Retail & Customer Service",place:"Shoppers Drug Mart",description:"Worked in customer service, cash handling, stocking, daily store operations, and staff training."},
+    {date:"Previous",title:"Interactive Multimedia & Design",place:"Carleton University",description:"Worked with web development, visual design, Arduino, electronics, and physical computing before moving into Computer Science."}
   ],
-
   projects: [
     {
-      id:"queueup",
-      title:"QueueUp",
-      category:"Full Stack",
-      label:"TEAM PROJECT · IMD 2900",
-      image:"assets/projects/download.png",
-      shortDescription:"A team-built gaming lobby platform where users can discover, create, join, and manage gaming lobbies.",
-      description:"QueueUp is a full-stack web application developed collaboratively with Django. Users can discover other players, create gaming lobbies, apply to join groups, manage lobby requests, and communicate through lobby chat.",
-      contribution:"I worked collaboratively with the project team while learning how a larger Django application connects frontend templates, backend views, routing, models, and user interactions.",
-      tags:["Python","Django","HTML","CSS","Full Stack","Team Project"],
-      features:["User registration and authentication","Browse gaming lobbies","Create and manage lobbies","Join requests with accept / decline controls","Lobby details and navigation","Lobby chat"],
-      github:"https://github.com/vinit-rao/queueup-django",
-      live:""
+      id:"queueup", title:"QueueUp", category:"Full-stack web application", label:"TEAM PROJECT · IMD 2900",
+      image:"assets/projects/queueup.png",
+      shortDescription:"A Django gaming lobby platform where users can discover, create, join, and manage gaming lobbies.",
+      description:"QueueUp is a full-stack web application developed collaboratively with Django. Users can discover gaming lobbies, create their own groups, apply to join others, manage requests, and communicate through lobby chat.",
+      contribution:"I worked collaboratively with the project team while gaining experience with how Django templates, views, routing, models, and user interactions work together.",
+      tags:["Python","Django","HTML","CSS","Full Stack"],
+      features:["User accounts and authentication","Lobby discovery","Create and manage lobbies","Join requests","Lobby chat"],
+      github:"https://github.com/vinit-rao/queueup-django", live:""
     },
     {
-      id:"gamefeast",
-      title:"GameFeast",
-      category:"Software",
-      label:"SOFTWARE PROJECT",
+      id:"one-piece", title:"One Piece Card Game", category:"Interactive programming project", label:"SOFTWARE PROJECT",
       image:"",
-      shortDescription:"An interactive software project focused on organizing features and user experience.",
-      description:"A software project where I worked on organizing features and turning the core idea into an interactive application.",
-      contribution:"Worked on the application experience and project implementation.",
-      tags:["Software","Interactive"],
-      features:["Interactive application flow","Organized project features","User-focused interface"],
-      github:"https://github.com/arajihussein28-hash/Gamefeastfinal",
-      live:""
-    },
-    {
-      id:"future-ai",
-      title:"AI / ML Project",
-      category:"AI/ML",
-      label:"COMING NEXT",
-      image:"",
-      shortDescription:"Reserved for a stronger machine-learning project as I move further into my specialization.",
-      description:"This space is reserved for a future machine-learning project built with Python and real data.",
-      contribution:"Planned future project.",
-      tags:["Python","AI","Machine Learning"],
-      features:["Model training","Data preprocessing","Model evaluation"],
-      github:"",
-      live:""
+      shortDescription:"A programming project focused on card-game rules, player actions, and game-state logic.",
+      description:"An interactive programming project inspired by the One Piece Card Game. It helped me practice turning game rules, player actions, and state changes into working program behaviour.",
+      contribution:"Worked on organizing and implementing the game logic.",
+      tags:["Programming","Game Logic","Software"],
+      features:["Player actions","Game-state logic","Rule-driven behaviour"],
+      github:"https://github.com/arajihussein28-hash/ONE_PIECE_CARD_GAME", live:""
     }
-  ],
-
-  coursework: [
-    { code:"COMP 2401", name:"Systems Programming", details:"C, memory, pointers, structs, low-level programming" },
-    { code:"COMP 2402", name:"Abstract Data Types & Algorithms", details:"Data structures, algorithm analysis, implementation" },
-    { code:"COMP 1805", name:"Discrete Structures", details:"Logic, proofs, sets, functions, combinatorics" },
-    { code:"IMD 1005", name:"Web Development", details:"Web interfaces and front-end development" },
-    { code:"BIT 2006", name:"Electronics & Physical Computing", details:"Arduino, electronics, sensors, serial communication" }
   ]
 };
