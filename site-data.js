@@ -36,15 +36,5 @@ const SITE_DATA = {
       features:["User accounts and authentication","Lobby discovery","Create and manage lobbies","Join requests","Lobby chat"],
       github:"https://github.com/vinit-rao/queueup-django", live:"https://queueup-bigteam.onrender.com/"
     },
-    {
-      id:"one-piece", title:"One Piece Card Game", category:"Interactive programming project", label:"SOFTWARE PROJECT",
-      image:"",
-      shortDescription:"A programming project focused on card-game rules, player actions, and game-state logic.",
-      description:"An interactive programming project inspired by the One Piece Card Game. It helped me practice turning game rules, player actions, and state changes into working program behaviour.",
-      contribution:"Worked on organizing and implementing the game logic.",
-      tags:["Programming","Game Logic","Software"],
-      features:["Player actions","Game-state logic","Rule-driven behaviour"],
-      github:"https://github.com/arajihussein28-hash/ONE_PIECE_CARD_GAME", live:""
-    }
   ]
 };
