@@ -177,3 +177,58 @@ html { scroll-padding-top: 32px; }
   .profile-nav .nav-links { flex-direction: row; flex-wrap: wrap; gap: 8px 22px; }
   .profile-nav .nav-links a::before { display: none; }
 }
+
+/* Upload-safe project image and layouts for phones, tablets, and laptops. */
+img { max-width: 100%; }
+.profile, .profile-top, .profile-bottom, .project-copy, .timeline-row > div { min-width: 0; }
+.profile-intro, .project-copy, .timeline-row, .about-copy, .contact-section { overflow-wrap: anywhere; }
+.project-image img { object-fit: contain; }
+.project-tags span, .skill-items span { max-width: 100%; overflow-wrap: anywhere; }
+.contact-email > span:first-child { min-width: 0; }
+.profile-nav .nav-links a { min-height: 36px; }
+@media (max-width: 1100px) {
+  .portfolio { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .profile { position: static; min-height: 0; max-height: none; padding: 48px 0 40px; gap: 30px; }
+  .electric-name { font-size: clamp(2.3rem, 6.5vw, 3.8rem); }
+  .profile-intro { max-width: 460px; }
+  .profile-nav .nav-links { flex-direction: row; flex-wrap: wrap; gap: 4px 24px; }
+  .profile-nav .nav-links a { min-height: 44px; padding: 10px 0; font-size: 12px; }
+  .profile-nav .nav-links a:last-child { padding: 10px 0; }
+  .profile-nav .nav-links a::before { display: none; }
+  .profile-bottom { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px 28px; }
+  .availability { margin-bottom: 0; font-size: 12px; }
+  .profile-links a { min-height: 44px; }
+  .content { padding-top: 8px; }
+  .project-card { grid-template-columns: 160px minmax(0, 1fr); }
+  .project-copy > p { font-size: 14px; }
+}
+@media (max-width: 640px) {
+  .shell { width: calc(100% - 36px); }
+  .profile { padding-top: 32px; padding-bottom: 36px; }
+  .profile-nav { margin-top: 20px; }
+  .profile-nav .nav-links { gap: 2px 22px; }
+  .profile-bottom { align-items: flex-start; flex-direction: column; gap: 10px; }
+  .project-grid { margin-inline: 0; gap: 18px; }
+  .project-card { grid-template-columns: minmax(0, 1fr); padding: 0; gap: 18px; }
+  .project-image { width: 100%; margin: 0; aspect-ratio: 16 / 9; }
+  .project-meta { font-size: 9px; }
+  .project-card h3 { font-size: 18px; }
+  .project-tags span, .skill-items span { font-size: 11px; }
+  .project-tags { gap: 7px; }
+  .timeline-row { grid-template-columns: minmax(0, 1fr); gap: 6px; padding: 18px 0; }
+  .timeline-row h3 { font-size: 15px; }
+  .timeline-desc { font-size: 14px; }
+  .section { margin-bottom: 56px; }
+  .section-label { margin-bottom: 22px; }
+  .contact-email { display: flex; justify-content: space-between; font-size: 14px; }
+  .contact-links a, .inline-link { min-height: 44px; display: inline-flex; align-items: center; }
+  .project-modal { padding: 12px; }
+  .modal-card { max-height: 92svh; }
+  .modal-top { padding: 10px 18px; }
+  .modal-top button { min-width: 44px; min-height: 44px; }
+  .modal-body { padding: 20px; overflow-wrap: anywhere; }
+  .modal-links a { min-height: 44px; display: inline-flex; align-items: center; }
+}
+@media (min-width: 1101px) and (max-height: 720px) {
+  .profile { position: static; min-height: 0; max-height: none; }
+}

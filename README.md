@@ -1,24 +1,16 @@
-# Hussein Araji — Portfolio
+# Hussein Araji Portfolio
 
-Personal portfolio with a dark red theme, responsive layout, cinematic HA opening, project details, and resume PDF.
+Upload these files together into the root of your GitHub Pages repository:
 
-## Preview
+- index.html
+- style.css
+- script.js
+- site-data.js
+- resume.pdf
+- README.md (optional)
 
-Open index.html in a browser. No installation or build step is required.
+The project image is embedded in site-data.js. There is no separate image folder to upload.
 
-## Upload to GitHub
+Keep the filenames exactly as written. Replace the older files rather than uploading this folder inside another folder. The ZIP contains these files directly at its root.
 
-Upload the contents of this folder to your repository root. Keep index.html at the root and keep the asset folder with its contents. Include resume.pdf so the Resume links work.
-
-Uploading files to a repository stores the website source. Enable GitHub Pages separately if you want a public website.
-
-## Edit content
-
-- site-data.js: projects, experience, skills, contact information, and resume path.
-- index.html: name, navigation, availability, and page structure.
-- style.css: colors, layout, and animations.
-- script.js: project popup, navigation highlighting, and intro behavior.
-- resume.pdf: the current resume linked throughout the website.
-- asset/download.png: the project image.
-
-Availability is set to Winter 2027. The folder contains the finished website without development scripts, backup files, or unused images.
+Open index.html for a local preview. No build or package installation is required. Your dark red theme, cinematic HA intro, navigation, Winter 2027 availability, and resume are included.
