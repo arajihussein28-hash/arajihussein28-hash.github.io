@@ -1,10 +1,80 @@
-const D=SITE_DATA;
-document.getElementById("heroIntro").textContent=D.profile.heroIntro;document.getElementById("emailButton").href=`mailto:${D.profile.email}`;document.getElementById("emailLink").href=`mailto:${D.profile.email}`;document.getElementById("emailText").textContent=D.profile.email;document.getElementById("githubButton").href=D.profile.github;document.getElementById("githubLink").href=D.profile.github;document.getElementById("resumeNav").href=D.profile.resume;document.getElementById("contactText").textContent=D.profile.contactText;
-const links=[{label:"GitHub ↗",url:D.profile.github},...(D.profile.linkedin?[{label:"LinkedIn ↗",url:D.profile.linkedin}]:[]),{label:"Resume ↗",url:D.profile.resume}];document.getElementById("contactLinks").innerHTML=links.map(x=>`<a href="${x.url}" target="_blank" rel="noopener">${x.label}</a>`).join("");
-document.getElementById("aboutCopy").innerHTML=D.about.map(x=>`<p>${x}</p>`).join("");document.getElementById("skillsList").innerHTML=D.skills.map(x=>`<div class="skill-row"><h3>${x.group}</h3><div class="skill-items">${x.items.map(i=>`<span>${i}</span>`).join("")}</div></div>`).join("");document.getElementById("timeline").innerHTML=D.experience.map(x=>`<article class="timeline-row"><div class="timeline-date">${x.date}</div><div><h3>${x.title}</h3><p class="timeline-place">${x.place}</p><p class="timeline-desc">${x.description}</p></div></article>`).join("");
-const grid=document.getElementById("projectGrid");grid.innerHTML=D.projects.map(p=>`<article class="project-card" data-project="${p.id}" tabindex="0"><div class="project-image">${p.image?`<img src="${p.image}" alt="${p.title} screenshot">`:`<div class="project-placeholder">${p.title}</div>`}</div><div class="project-meta"><span>${p.label}</span><span>VIEW ↗</span></div><h3>${p.title}</h3><p>${p.shortDescription}</p><div class="project-tags">${p.tags.slice(0,5).map(t=>`<span>${t}</span>`).join("")}</div></article>`).join("");
-const modal=document.getElementById("projectModal"),body=document.getElementById("modalBody"),label=document.getElementById("modalLabel");function openProject(id){const p=D.projects.find(x=>x.id===id);if(!p)return;label.textContent=p.label;body.innerHTML=`<h2>${p.title}</h2><p class="modal-category">${p.category}</p>${p.image?`<img class="modal-image" src="${p.image}" alt="${p.title} screenshot">`:`<div class="modal-placeholder">${p.title}</div>`}<p class="modal-lead">${p.description}</p><div class="modal-detail"><div><h3>My involvement</h3><p>${p.contribution}</p></div><div><h3>Key features</h3><ul>${p.features.map(f=>`<li>${f}</li>`).join("")}</ul></div></div><div class="project-tags">${p.tags.map(t=>`<span>${t}</span>`).join("")}</div><div class="modal-links">${p.github?`<a class="primary" href="${p.github}" target="_blank" rel="noopener">Source code ↗</a>`:""}${p.live?`<a href="${p.live}" target="_blank" rel="noopener">Live demo ↗</a>`:""}</div>`;modal.classList.add("open");document.body.classList.add("modal-open")}
-function closeProject(){modal.classList.remove("open");document.body.classList.remove("modal-open")}document.querySelectorAll(".project-card").forEach(c=>{const o=()=>openProject(c.dataset.project);c.addEventListener("click",o);c.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();o()}})});document.querySelectorAll("[data-close-modal]").forEach(x=>x.addEventListener("click",closeProject));document.addEventListener("keydown",e=>{if(e.key==="Escape")closeProject()});
-const menu=document.getElementById("menuToggle"),nav=document.getElementById("navLinks");menu.addEventListener("click",()=>nav.classList.toggle("open"));document.querySelectorAll(".nav-links a").forEach(a=>a.addEventListener("click",()=>nav.classList.remove("open")));
-const mark=document.getElementById("heroMark"),inner=mark.querySelector(".hero-mark-inner");mark.addEventListener("mousemove",e=>{const r=mark.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;inner.style.transform=`rotateX(${y*-10}deg) rotateY(${x*10}deg)`});mark.addEventListener("mouseleave",()=>inner.style.transform="rotateX(0deg) rotateY(0deg)");
-const topBtn=document.getElementById("backToTop");window.addEventListener("scroll",()=>topBtn.classList.toggle("visible",window.scrollY>650));topBtn.addEventListener("click",()=>window.scrollTo({top:0,behavior:"smooth"}));document.getElementById("year").textContent=new Date().getFullYear();window.addEventListener("load",()=>setTimeout(()=>document.getElementById("loader").classList.add("hide"),850));
+const D = SITE_DATA;
+const $ = id => document.getElementById(id);
+const escapeHTML = text => String(text).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const tagList = tags => tags.map(t => '<span>'+escapeHTML(t)+'</span>').join('');
+for (const id of ['emailButton','emailLink']) $(id).href = 'mailto:'+D.profile.email;
+for (const id of ['githubButton','githubLink']) $(id).href = D.profile.github;
+for (const id of ['resumeNav','resumeLink']) $(id).href = D.profile.resume;
+$('emailText').textContent = D.profile.email;
+$('contactText').textContent = D.profile.contactText;
+$('year').textContent = new Date().getFullYear();
+const links = [{label:'GitHub ↗',url:D.profile.github},...(D.profile.linkedin?[{label:'LinkedIn ↗',url:D.profile.linkedin}]:[]),{label:'Resume ↗',url:D.profile.resume}];
+$('contactLinks').innerHTML = links.map(l => '<a href="'+escapeHTML(l.url)+'" target="_blank" rel="noopener">'+escapeHTML(l.label)+'</a>').join('');
+$('aboutCopy').innerHTML = D.about.map(p => '<p>'+escapeHTML(p)+'</p>').join('');
+$('skillsList').innerHTML = D.skills.map(s => '<div class="skill-row"><h3>'+escapeHTML(s.group)+'</h3><div class="skill-items">'+tagList(s.items)+'</div></div>').join('');
+$('timeline').innerHTML = D.experience.map(e => '<article class="timeline-row"><p class="timeline-date">'+escapeHTML(e.date)+'</p><div><h3>'+escapeHTML(e.title)+'</h3><p class="timeline-place">'+escapeHTML(e.place)+'</p><p class="timeline-desc">'+escapeHTML(e.description)+'</p></div></article>').join('');
+$('projectGrid').innerHTML = D.projects.map(p => '<article class="project-card" data-project="'+escapeHTML(p.id)+'" tabindex="0" role="button" aria-label="View '+escapeHTML(p.title)+' project details"><div class="project-image">'+(p.image?'<img src="'+escapeHTML(p.image)+'" alt="'+escapeHTML(p.title)+' screenshot" loading="lazy">':'<div class="project-placeholder">'+escapeHTML(p.title)+'</div>')+'</div><div class="project-copy"><div class="project-meta">'+escapeHTML(p.label)+'</div><h3>'+escapeHTML(p.title)+' <span class="project-arrow" aria-hidden="true">↗</span></h3><p>'+escapeHTML(p.shortDescription)+'</p><div class="project-tags">'+tagList(p.tags)+'</div></div></article>').join('');
+const modal = $('projectModal');
+let lastFocus;
+function openProject(id) {
+  const p = D.projects.find(p => p.id === id);
+  if (!p) return;
+  lastFocus = document.activeElement;
+  $('modalLabel').textContent = p.label;
+  $('modalBody').innerHTML = '<h2 id="modalTitle">'+escapeHTML(p.title)+'</h2><p class="modal-category">'+escapeHTML(p.category)+'</p>'+(p.image?'<img class="modal-image" src="'+escapeHTML(p.image)+'" alt="'+escapeHTML(p.title)+' screenshot">':'')+'<p class="modal-lead">'+escapeHTML(p.description)+'</p><div class="modal-detail"><div><h3>My involvement</h3><p>'+escapeHTML(p.contribution)+'</p></div><div><h3>Key features</h3><ul>'+p.features.map(f=>'<li>'+escapeHTML(f)+'</li>').join('')+'</ul></div></div><div class="project-tags">'+tagList(p.tags)+'</div><div class="modal-links">'+(p.github?'<a href="'+escapeHTML(p.github)+'" target="_blank" rel="noopener">Source code ↗</a>':'')+(p.live?'<a href="'+escapeHTML(p.live)+'" target="_blank" rel="noopener">Live demo ↗</a>':'')+'</div>';
+  modal.classList.add('open'); modal.setAttribute('aria-hidden','false');
+  document.body.classList.add('modal-open');
+  modal.querySelector('button').focus();
+}
+function closeProject() {
+  if (!modal.classList.contains('open')) return;
+  modal.classList.remove('open'); modal.setAttribute('aria-hidden','true');
+  document.body.classList.remove('modal-open');
+  lastFocus?.focus();
+}
+document.querySelectorAll('.project-card').forEach(card => {
+  card.addEventListener('click',()=>openProject(card.dataset.project));
+  card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openProject(card.dataset.project)}});
+});
+document.querySelectorAll('[data-close-modal]').forEach(el=>el.addEventListener('click',closeProject));
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape') closeProject();
+  if(e.key==='Tab' && modal.classList.contains('open')) {
+    const focusable=modal.querySelectorAll('button,a[href]');
+    const first=focusable[0],last=focusable[focusable.length-1];
+    if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}
+    else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}
+  }
+});
+const navLinks=[...document.querySelectorAll('.nav-links a[href^="#"]')];
+if ('IntersectionObserver' in window) {
+  const sections=[...document.querySelectorAll('main section[id]')];
+  const visible=new Set();
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(e=>e.isIntersecting?visible.add(e.target.id):visible.delete(e.target.id));
+    const current=sections.find(s=>visible.has(s.id))?.id;
+    navLinks.forEach(a=>{const active=a.hash==='#'+current;a.classList.toggle('active',active);if(active)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current')});
+  },{rootMargin:'-18% 0px -52% 0px'});
+  sections.forEach(s=>observer.observe(s));
+}
+const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
+if(window.matchMedia('(pointer: fine)').matches && !reducedMotion.matches) {
+  let pending=false;
+  document.addEventListener('pointermove',e=>{
+    if(pending)return;
+    pending=true;
+    requestAnimationFrame(()=>{document.documentElement.style.setProperty('--spot-x',e.clientX+'px');document.documentElement.style.setProperty('--spot-y',e.clientY+'px');pending=false});
+  },{passive:true});
+}
+window.addEventListener('scroll',()=>$('backToTop').classList.toggle('visible',window.scrollY>600),{passive:true});
+$('backToTop').addEventListener('click',()=>window.scrollTo({top:0,behavior:reducedMotion.matches?'instant':'smooth'}));
+// Start immediately; remote fonts and images cannot hold the intro open.
+const intro = document.getElementById("loader");
+function finishIntro() {
+  intro.classList.add("hide");
+  intro.setAttribute("aria-hidden", "true");
+  if (intro.contains(document.activeElement)) document.getElementById("skipIntro").blur();
+}
+document.getElementById("skipIntro").addEventListener("click", finishIntro);
+document.addEventListener("keydown", e => { if (e.key === "Escape") finishIntro(); });
+setTimeout(finishIntro, window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 1600 : 2800);

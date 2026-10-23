@@ -3,76 +3,88 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Hussein Araji — Computer Science student focused on AI, machine learning, and software development.">
-  <title>Hussein Araji | Computer Science</title>
+  <meta name="description" content="Hussein Araji — Computer Science, Artificial Intelligence, Machine Learning, and software development.">
+  <title>Hussein Araji | Computer Science & AI / ML</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=profile-nav-3">
 </head>
 <body>
-  <div class="circuit-background" aria-hidden="true"></div>
-  <div id="loader" class="loader"><div class="loader-logo"><span>H</span><span>A</span></div></div>
+  <a class="skip-link" href="#content">Skip to content</a>
+  <div id="loader" class="loader" aria-label="Hussein Araji opening animation">
+    <div class="intro-panels" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="intro-halo" aria-hidden="true"></div>
+    <div class="loader-logo" aria-hidden="true"><span>H</span><span>A</span></div>
+    <button id="skipIntro" class="intro-skip" type="button">Skip intro ↗</button>
+  </div>
 
-  <header class="site-header">
-    <nav class="nav shell">
-      <a href="#top" class="brand">HA</a>
-      <button id="menuToggle" class="menu-toggle" aria-label="Open navigation"><span></span><span></span></button>
-      <div class="nav-links" id="navLinks">
-        <a href="#projects">Work</a><a href="#about">About</a><a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#contact">Contact</a>
-        <a id="resumeNav" href="resume.pdf" target="_blank">Resume ↗</a>
+
+
+  <div class="portfolio shell" id="top">
+    <aside class="profile" aria-labelledby="heroName">
+      <div class="profile-top">
+        <p class="eyebrow">HUSSEIN ARAJI / PORTFOLIO</p>
+        <h1 id="heroName" class="electric-name">Hussein <span class="red-a">A</span>raji</h1>
+        <div class="hero-specialty" aria-label="Computer Science, AI and ML">
+          <span class="computer-science">Computer Science</span>
+          <span class="specialty-line"><span class="ai-word">AI</span><span class="slash">/</span><span class="ml-word">ML</span></span>
+        </div>
+        <p class="profile-intro">Building software. Exploring intelligence.<br>Learning something new along the way.</p>
+        <nav class="profile-nav" aria-label="Main navigation">
+          <div class="nav-links" id="navLinks">
+        <a href="#about">About</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#contact">Contact</a>
+        <a id="resumeNav" href="resume.pdf" target="_blank" rel="noopener">Resume ↗</a>
       </div>
-    </nav>
-  </header>
-
-  <main id="top">
-    <section class="hero shell">
-      <div class="hero-copy">
-        <p class="eyebrow">COMPUTER SCIENCE · AI / ML</p>
-        <h1>Hussein Araji</h1>
-        <p class="hero-role">Computer Science student at Carleton University focused on <span>Artificial Intelligence & Machine Learning.</span></p>
-        <p class="hero-intro" id="heroIntro"></p>
-        <div class="hero-actions">
-          <a href="#projects" class="button primary-button">View projects</a>
-          <a id="githubButton" href="#" target="_blank" class="button secondary-button">GitHub ↗</a>
-          <a id="emailButton" href="#" class="button text-button">Email me</a>
+        </nav>
+      </div>
+      <div class="profile-bottom">
+        <p class="availability"><span></span> Open for co-op · Winter 2027</p>
+        <div class="profile-links">
+          <a id="githubButton" href="#" target="_blank" rel="noopener" aria-label="GitHub profile"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.86c-2.78.6-3.37-1.18-3.37-1.18-.45-1.15-1.11-1.46-1.11-1.46-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.64-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.6 9.6 0 0 1 12 6.84c.85 0 1.71.11 2.51.34 1.91-1.3 2.75-1.03 2.75-1.03.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg><span>GitHub</span></a>
+          <a id="emailButton" href="#" aria-label="Email Hussein"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 6 9 7 9-7"/></svg><span>Email</span></a>
         </div>
       </div>
-      <div class="hero-mark-wrap">
-        <div id="heroMark" class="hero-mark"><div class="hero-mark-inner"><span class="mark-h">H</span><span class="mark-a">A</span></div></div>
-        <p>Ottawa, Canada</p>
-      </div>
-    </section>
-
-    <section class="section shell" id="projects">
-      <div class="section-head"><div><p class="section-label">01 / SELECTED WORK</p><h2>Projects</h2></div><a id="githubLink" class="small-link" href="#" target="_blank">All GitHub repositories ↗</a></div>
-      <div class="project-grid" id="projectGrid"></div>
-    </section>
-
-    <section class="section shell" id="about">
-      <div class="section-head simple-head"><div><p class="section-label">02 / ABOUT</p><h2>A little about me</h2></div></div>
-      <div class="about-grid"><p class="about-lead">I like building things, understanding how software works, and improving through projects.</p><div class="about-copy" id="aboutCopy"></div></div>
-    </section>
-
-    <section class="section shell" id="skills">
-      <div class="section-head simple-head"><div><p class="section-label">03 / SKILLS</p><h2>What I work with</h2></div></div>
-      <div class="skills-list" id="skillsList"></div>
-    </section>
-
-    <section class="section shell" id="experience">
-      <div class="section-head simple-head"><div><p class="section-label">04 / EXPERIENCE</p><h2>Education & work</h2></div></div>
-      <div class="timeline" id="timeline"></div>
-    </section>
-
-    <section class="contact-section" id="contact"><div class="shell contact-grid">
-      <div><p class="section-label">05 / CONTACT</p><h2>Interested in working <span>together?</span></h2></div>
-      <div class="contact-copy"><p id="contactText"></p><a id="emailLink" class="contact-email" href="#"><span id="emailText"></span><span>↗</span></a><div class="contact-links" id="contactLinks"></div></div>
-    </div></section>
-  </main>
-
-  <div id="projectModal" class="project-modal" aria-hidden="true"><div class="modal-backdrop" data-close-modal></div><div class="modal-card"><div class="modal-top"><span id="modalLabel">PROJECT</span><button data-close-modal aria-label="Close project">×</button></div><div id="modalBody" class="modal-body"></div></div></div>
+    </aside>
+    <main class="content" id="content" tabindex="-1">
+      <section class="section" id="about" aria-labelledby="aboutHeading">
+        <h2 class="section-label" id="aboutHeading"><span>01</span> ABOUT</h2>
+        <p class="about-lead">I like building things, understanding how software works, and improving through projects.</p>
+        <div id="aboutCopy" class="about-copy"></div>
+      </section>
+      <section class="section" id="experience" aria-labelledby="experienceHeading">
+        <h2 class="section-label" id="experienceHeading"><span>02</span> EXPERIENCE & EDUCATION</h2>
+        <div id="timeline" class="timeline"></div>
+        <a class="inline-link" id="resumeLink" href="resume.pdf" target="_blank" rel="noopener">View resume <span>↗</span></a>
+      </section>
+      <section class="section" id="projects" aria-labelledby="projectsHeading">
+        <h2 class="section-label" id="projectsHeading"><span>03</span> PROJECTS</h2>
+        <div class="project-grid" id="projectGrid"></div>
+        <a id="githubLink" class="inline-link" href="#" target="_blank" rel="noopener">All GitHub repositories <span>↗</span></a>
+      </section>
+      <section class="section" id="skills" aria-labelledby="skillsHeading">
+        <h2 class="section-label" id="skillsHeading"><span>04</span> SKILLS & TOOLS</h2>
+        <div id="skillsList" class="skills-list"></div>
+      </section>
+      <section class="section contact-section" id="contact" aria-labelledby="contactHeading">
+        <h2 class="section-label" id="contactHeading"><span>05</span> GET IN TOUCH</h2>
+        <h3>Let's build something<br><span>worth sharing.</span></h3>
+        <p id="contactText"></p>
+        <a id="emailLink" class="contact-email" href="#"><span id="emailText"></span><span aria-hidden="true">↗</span></a>
+        <div id="contactLinks" class="contact-links"></div>
+      </section>
+      <footer><p>Built by Hussein Araji.</p><p>© <span id="year"></span> · Always learning, always building.</p></footer>
+    </main>
+  </div>
+  <div id="projectModal" class="project-modal" aria-hidden="true">
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1">
+      <div class="modal-top"><span id="modalLabel">PROJECT</span><button data-close-modal aria-label="Close project">×</button></div>
+      <div id="modalBody" class="modal-body"></div>
+    </div>
+  </div>
   <button id="backToTop" class="back-to-top" aria-label="Back to top">↑</button>
-  <footer><div class="shell footer-inner"><p>© <span id="year"></span> Hussein Araji</p><p>Built by Hussein</p></div></footer>
-  <script src="site-data.js"></script><script src="script.js"></script>
+  <script src="site-data.js?v=winter-2027"></script><script src="script.js?v=red-intro-2"></script>
 </body>
 </html>
+

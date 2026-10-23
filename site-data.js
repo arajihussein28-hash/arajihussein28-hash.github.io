@@ -5,11 +5,10 @@ const SITE_DATA = {
     github: "https://github.com/arajihussein28-hash",
     linkedin: "",
     resume: "resume.pdf",
-    heroIntro: "I build software, learn how systems work, and keep improving through coursework and hands-on projects.",
-    contactText: "I'm currently interested in co-op and internship opportunities in software development, AI/ML, and other technical roles."
+    contactText: "I'm open to Winter 2027 co-op opportunities in software development, AI/ML, and other technical roles."
   },
   about: [
-    "I'm a Computer Science student at Carleton University with a focus on Artificial Intelligence and Machine Learning. My current coursework is strengthening my foundation in programming, algorithms, data structures, systems programming, and discrete mathematics.",
+    "My focus is Artificial Intelligence and Machine Learning, with a foundation in programming, algorithms, data structures, and systems programming.",
     "Before moving into Computer Science, I studied Interactive Multimedia and Design. That gave me experience with web development, interface design, electronics, Arduino, and interactive projects.",
     "Right now, I'm focused on becoming a stronger developer, building better projects, and getting real technical experience through co-op and internships."
   ],
@@ -28,7 +27,7 @@ const SITE_DATA = {
   projects: [
     {
       id:"queueup", title:"QueueUp", category:"Full-stack web application", label:"TEAM PROJECT · IMD 2900",
-      image:"assets/projects/download.png",
+      image:"asset/download.png",
       shortDescription:"A Django gaming lobby platform where users can discover, create, join, and manage gaming lobbies.",
       description:"QueueUp is a full-stack web application developed collaboratively with Django. Users can discover gaming lobbies, create their own groups, apply to join others, manage requests, and communicate through lobby chat.",
       contribution:"I worked collaboratively with the project team while gaining experience with how Django templates, views, routing, models, and user interactions work together.",
