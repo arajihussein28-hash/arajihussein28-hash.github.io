@@ -190,4 +190,235 @@ setTimeout(() => {
 }, 12400);
 
 });
+window.addEventListener("load", () => {
+
+  const dotsContainer =
+    document.querySelector(".pac-dots");
+
+  const pacman =
+    document.querySelector(".red-pacman");
+
+  const explosion =
+    document.querySelector(".pac-explosion");
+
+  const allNameSpans =
+    document.querySelectorAll(
+      ".letter-name > span:not(.name-space)"
+    );
+
+
+  const TOTAL_DOTS = 12;
+
+  const START_DELAY = 4200;
+
+  /* slow, smooth animation */
+  const CHOMP_TIME = 720;
+
+
+  /* =========================
+     CREATE 12 DOTS
+  ========================= */
+
+  for (
+    let i = 0;
+    i < TOTAL_DOTS;
+    i++
+  ) {
+
+    const dot =
+      document.createElement("span");
+
+    dot.className = "pac-dot";
+
+    dotsContainer.appendChild(dot);
+
+  }
+
+
+  const dots =
+    document.querySelectorAll(".pac-dot");
+
+
+  /* =========================
+     SHOW DOTS FIRST
+  ========================= */
+
+  setTimeout(() => {
+
+    dots.forEach((dot, index) => {
+
+      setTimeout(() => {
+
+        dot.classList.add("ready");
+
+      }, index * 70);
+
+    });
+
+  }, START_DELAY);
+
+
+  /* =========================
+     START PAC-MAN
+  ========================= */
+
+  setTimeout(() => {
+
+    pacman.style.opacity = "1";
+
+    let current = 0;
+
+
+    function eatNextDot() {
+
+      if (current >= TOTAL_DOTS) {
+
+        finishPacman();
+
+        return;
+
+      }
+
+
+      const dot =
+        dots[current];
+
+
+      /*
+        Move Pac-Man to current dot
+      */
+
+      const dotCenter =
+        dot.offsetLeft +
+        dot.offsetWidth / 2;
+
+      const pacSize =
+        pacman.offsetWidth;
+
+
+      pacman.style.left =
+        `${dotCenter - pacSize * 0.72}px`;
+
+
+      /*
+        Wait until Pac-Man reaches dot
+      */
+
+      setTimeout(() => {
+
+        /* eat dot */
+
+        dot.classList.add("eaten");
+
+
+        /* reveal corresponding letter */
+
+        if (allNameSpans[current]) {
+
+          allNameSpans[current]
+            .classList
+            .add("show-letter");
+
+        }
+
+
+        /* eating sound */
+
+        if (
+          typeof playEatSound ===
+          "function"
+        ) {
+
+          playEatSound();
+
+        }
+
+
+        /*
+          Pac-Man gets larger
+          after EVERY dot
+        */
+
+        const growth =
+          1 + ((current + 1) * 0.055);
+
+
+        pacman.style.transform =
+          `translateY(-50%) scale(${growth})`;
+
+
+        current++;
+
+
+        /*
+          Small pause before
+          moving to next dot
+        */
+
+        setTimeout(
+          eatNextDot,
+          170
+        );
+
+
+      }, CHOMP_TIME * 0.72);
+
+    }
+
+
+    eatNextDot();
+
+  }, START_DELAY + 1200);
+
+
+  /* =========================
+     FINAL EXPLOSION
+  ========================= */
+
+  function finishPacman() {
+
+    /*
+      He is very full
+    */
+
+    pacman.style.transform =
+      "translateY(-50%) scale(1.9)";
+
+
+    setTimeout(() => {
+
+      /*
+        Hide Pac-Man
+      */
+
+      pacman.style.opacity = "0";
+
+
+      /*
+        Explosion pixels
+      */
+
+      explosion.classList.add(
+        "explode"
+      );
+
+
+      /*
+        Explosion sound
+      */
+
+      if (
+        typeof playExplosionSound ===
+        "function"
+      ) {
+
+        playExplosionSound();
+
+      }
+
+    }, 550);
+
+  }
+
+});
 
