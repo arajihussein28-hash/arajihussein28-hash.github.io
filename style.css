@@ -365,6 +365,10 @@ a, button, .project-card {
 .red-a {
   color: #dc354c;
 }
+.i-letter {
+  min-width: 0.42em;
+  text-align: center;
+}
 
 
 /* =========================
