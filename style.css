@@ -298,24 +298,22 @@ a, button, .project-card {
 
 .minecraft-name {
   position: relative;
-
   display: inline-flex;
   align-items: center;
-
   gap: 14px;
 
-  font-family: "DM Mono", monospace;
+  font-family: "Courier New", monospace;
+  font-size: clamp(2.7rem, 4.2vw, 4rem);
+  font-weight: 900;
 
-  font-size: clamp(2.5rem, 4vw, 3.8rem);
-  font-weight: 700;
-
-  letter-spacing: -0.06em;
+  letter-spacing: -0.08em;
+  text-transform: none;
 
   color: #f0e5e8;
 
   text-shadow:
-    2px 2px 0 #3b2229,
-    4px 4px 0 #1e1116;
+    3px 3px 0 #5c313b,
+    6px 6px 0 #241217;
 
   image-rendering: pixelated;
 }
@@ -326,22 +324,19 @@ a, button, .project-card {
 .typewriter-text {
   display: inline-block;
 
-  overflow: hidden;
-
   white-space: nowrap;
+  overflow: hidden;
 
   width: 0;
 
   border-right: 3px solid #ee7c8b;
 
   animation:
-    typeName 2.4s steps(13, end) forwards,
-    cursorBlink .7s step-end infinite;
+    typing 2.6s steps(13, end) forwards,
+    blinkCursor .7s step-end infinite;
 }
 
-
-@keyframes typeName {
-
+@keyframes typing {
   from {
     width: 0;
   }
@@ -349,12 +344,9 @@ a, button, .project-card {
   to {
     width: 13ch;
   }
-
 }
 
-
-@keyframes cursorBlink {
-
+@keyframes blinkCursor {
   0%,
   100% {
     border-color: transparent;
@@ -363,7 +355,6 @@ a, button, .project-card {
   50% {
     border-color: #ee7c8b;
   }
-
 }
 
 
