@@ -357,63 +357,65 @@ a, button, .project-card {
 }
 
 
-/* Minecraft block dots */
+/* =========================
+   SWAPPING DOTS AFTER NAME
+========================= */
+
+.dot-group {
+  position: relative;
+
+  width: 34px;
+  height: 14px;
+
+  margin-left: 12px;
+
+  flex-shrink: 0;
+}
 
 .name-dot {
-  width: 12px;
-  height: 12px;
+  position: absolute;
+  top: 1px;
+
+  width: 10px;
+  height: 10px;
 
   background: #ee7c8b;
 
   box-shadow:
     2px 2px 0 #6b2331,
     4px 4px 0 #241217;
-
-  flex-shrink: 0;
 }
 
-
-/* Left dot */
-
-.dot-left {
-  animation:
-    dotSwapLeft 2.2s ease-in-out infinite alternate;
+.dot-one {
+  left: 0;
+  animation: swapDotOne 1.8s ease-in-out infinite;
 }
 
-
-/* Right dot */
-
-.dot-right {
-  animation:
-    dotSwapRight 2.2s ease-in-out infinite alternate;
+.dot-two {
+  left: 22px;
+  animation: swapDotTwo 1.8s ease-in-out infinite;
 }
 
-
-/* Dot movement */
-
-@keyframes dotSwapLeft {
-
-  from {
-    transform: translateX(0);
+@keyframes swapDotOne {
+  0%,
+  100% {
+    left: 0;
   }
 
-  to {
-    transform: translateX(24px);
+  50% {
+    left: 22px;
   }
-
 }
 
-
-@keyframes dotSwapRight {
-
-  from {
-    transform: translateX(0);
+@keyframes swapDotTwo {
+  0%,
+  100% {
+    left: 22px;
   }
 
-  to {
-    transform: translateX(-24px);
+  50% {
+    left: 0;
   }
-
 }
 
 
