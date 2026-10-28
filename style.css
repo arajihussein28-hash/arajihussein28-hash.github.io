@@ -302,7 +302,7 @@ a, button, .project-card {
   align-items: center;
   gap: 14px;
 
-  font-family: "Courier New", monospace;
+   font-family: "Pixelify Sans", monospace !important;
   font-size: clamp(2.7rem, 4.2vw, 4rem);
   font-weight: 900;
 
@@ -332,8 +332,8 @@ a, button, .project-card {
   border-right: 3px solid #ee7c8b;
 
   animation:
-    typing 2.6s steps(13, end) forwards,
-    blinkCursor .7s step-end infinite;
+    typing 2.4s steps(13, end) forwards,
+    blinkCursor .7s step-end 3.6s infinite;
 }
 
 @keyframes typing {
