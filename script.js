@@ -363,6 +363,8 @@ dot.style.setProperty("--suck-x", `${suckX}px`);
   ========================= */
 
   function finishPacman() {
+    pacman.style.transform =
+  "translateY(-50%) scale(1.75)";
 
     /*
       He is very full
