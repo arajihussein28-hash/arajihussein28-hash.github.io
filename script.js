@@ -170,26 +170,6 @@ function playEatSound() {
 
   source.start();
 }
-    window.addEventListener("load", () => {
-
-  const START = 3600;
-  const DOT_INTERVAL = 650;
-
-  const letters = "HUSSEINARAJI";
-
-  letters.split("").forEach((letter, index) => {
-
-    setTimeout(() => {
-      playEatSound();
-    }, START + index * DOT_INTERVAL);
-
-  });
-
-setTimeout(() => {
-  playExplosionSound();
-}, 12400);
-
-});
 window.addEventListener("load", () => {
 
   const dotsContainer =
