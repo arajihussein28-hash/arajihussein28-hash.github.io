@@ -327,7 +327,7 @@ dot.style.setProperty("--suck-x", `${suckX}px`);
         */
 
         const growth =
-          1 + ((current + 1) * 0.04);
+          1 + ((current + 1) * 0.065);
 
 
         pacman.style.transform =
