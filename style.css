@@ -292,32 +292,7 @@ a, button, .project-card {
   }
 
 }
-/* =========================
-   MINECRAFT STYLE NAME
-========================= */
 
-.minecraft-name {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-
-   font-family: "Pixelify Sans", monospace !important;
-  font-size: clamp(2.7rem, 4.2vw, 4rem);
-  font-weight: 700;
-
-  letter-spacing: -0.03em;
-  text-transform: none;
-
-  color: #f0e5e8;
-
-  text-shadow:
-    3px 3px 0 #5c313b,
-    6px 6px 0 #241217;
-
-}
-.red-a {
-  color: #dc354c;
-}
 /* =========================
    PAC-MAN NAME ANIMATION
 ========================= */
@@ -560,6 +535,61 @@ a, button, .project-card {
       scaleY(1);
   }
 
+}
+@keyframes pixelBurst {
+  0% {
+    opacity: 1;
+    transform:
+      translate(0, 0)
+      scale(1.4);
+  }
+
+  100% {
+    opacity: 0;
+    transform:
+      translate(
+        var(--x),
+        var(--y)
+      )
+      scale(.2);
+  }
+}
+.pac-explosion {
+  position: absolute;
+  right: 0;
+  top: 50%;
+
+  width: 10px;
+  height: 10px;
+
+  transform: translateY(-50%);
+
+  pointer-events: none;
+}
+
+.pac-explosion i {
+  position: absolute;
+
+  width: 7px;
+  height: 7px;
+
+  background: #dc354c;
+
+  opacity: 0;
+}
+
+.pac-explosion i:nth-child(1) { --x: 38px;  --y: -30px; }
+.pac-explosion i:nth-child(2) { --x: -36px; --y: -25px; }
+.pac-explosion i:nth-child(3) { --x: 40px;  --y: 15px; }
+.pac-explosion i:nth-child(4) { --x: -42px; --y: 18px; }
+.pac-explosion i:nth-child(5) { --x: 15px;  --y: 40px; }
+.pac-explosion i:nth-child(6) { --x: -15px; --y: -42px; }
+.pac-explosion i:nth-child(7) { --x: 50px;  --y: 2px; }
+.pac-explosion i:nth-child(8) { --x: -50px; --y: 0; }
+.pac-explosion.explode i {
+  animation:
+    pixelBurst .75s
+    ease-out forwards;
 }
 
 
