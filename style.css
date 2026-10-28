@@ -397,7 +397,6 @@ a, button, .project-card {
 
 .red-pacman {
   position: absolute;
-
   left: -38px;
   top: 50%;
 
@@ -405,28 +404,65 @@ a, button, .project-card {
   height: 34px;
 
   border-radius: 50%;
-
-  background:
-    conic-gradient(
-      from 35deg,
-      #dc354c 0deg 290deg,
-      transparent 290deg 360deg
-    );
+  background: #dc354c;
 
   transform: translateY(-50%);
 
-  filter:
-    drop-shadow(3px 3px 0 #65121f);
+  filter: drop-shadow(3px 3px 0 #65121f);
 
   animation:
-    pacmanMove 3s linear 3.6s forwards;
+    pacmanMove 9s linear 3.6s forwards,
+    pacmanGrow 9s linear 3.6s forwards,
+    pacmanBurstGlow .35s ease 12.25s forwards;
 }
-.red-pacman {
-  /* keep your existing Pac-Man styles */
 
-  animation:
-    pacmanMove 3s linear 3.6s forwards,
-    pacmanBurstGlow .25s ease 6.25s forwards;
+/* mouth */
+.red-pacman::before {
+  content: "";
+
+  position: absolute;
+  right: -1px;
+  top: 50%;
+
+  width: 18px;
+  height: 24px;
+
+  background: var(--bg);
+
+  clip-path: polygon(100% 0, 0 50%, 100% 100%);
+
+  transform: translateY(-50%) scaleY(.25);
+  transform-origin: left center;
+
+  animation: pacMouth .42s ease-in-out 3.6s infinite alternate;
+}
+
+@keyframes pacMouth {
+  from {
+    transform: translateY(-50%) scaleY(.2);
+  }
+
+  to {
+    transform: translateY(-50%) scaleY(1);
+  }
+}
+
+.red-pacman::after {
+  content: "";
+
+  position: absolute;
+
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background: #10090c;
+
+  top: 7px;
+  right: 10px;
+
+  z-index: 2;
 }
 
 
@@ -435,32 +471,62 @@ a, button, .project-card {
 @keyframes pacmanMove {
   0% {
     left: -38px;
-    transform: translateY(-50%) scale(1);
     opacity: 1;
   }
 
-  82% {
+  92% {
     left: calc(100% - 22px);
-    transform: translateY(-50%) scale(1);
-    opacity: 1;
-  }
-
-  90% {
-    left: calc(100% - 22px);
-    transform: translateY(-50%) scale(1.35);
-    opacity: 1;
-  }
-
-  96% {
-    left: calc(100% - 22px);
-    transform: translateY(-50%) scale(.8);
     opacity: 1;
   }
 
   100% {
     left: calc(100% - 22px);
-    transform: translateY(-50%) scale(1.8);
     opacity: 0;
+  }
+}
+@keyframes pacmanGrow {
+  0% {
+    scale: 1;
+  }
+
+  10% {
+    scale: 1.04;
+  }
+
+  20% {
+    scale: 1.08;
+  }
+
+  30% {
+    scale: 1.12;
+  }
+
+  40% {
+    scale: 1.16;
+  }
+
+  50% {
+    scale: 1.20;
+  }
+
+  60% {
+    scale: 1.25;
+  }
+
+  70% {
+    scale: 1.30;
+  }
+
+  80% {
+    scale: 1.38;
+  }
+
+  90% {
+    scale: 1.48;
+  }
+
+  100% {
+    scale: 1.7;
   }
 }
 
@@ -522,7 +588,7 @@ a, button, .project-card {
 
   opacity: 0;
 
-  animation: pixelBurst .6s ease-out 6.3s forwards;
+  animation: pixelBurst .7s ease-out 12.4s forwards;
 }
 
 .pac-explosion i:nth-child(1) { --x: 26px;  --y: -26px; }
@@ -543,4 +609,3 @@ a, button, .project-card {
     transform: translate(var(--x), var(--y)) scale(.3);
   }
 }
-
