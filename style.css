@@ -331,7 +331,7 @@ a, button, .project-card {
   border-right: 3px solid #ee7c8b;
 
   animation:
-    typing 2.4s steps(13, end) 3.6s forwards,
+    typing 2.8s steps(13, end) 3.6s forwards,
     blinkCursor .7s step-end 3.6s infinite;
 }
 
@@ -341,7 +341,7 @@ a, button, .project-card {
   }
 
   to {
-    width: 13ch;
+    width: 12.5ch;
   }
 }
 
