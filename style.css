@@ -248,3 +248,59 @@ button:hover,
   text-shadow: 0 0 12px #ff304f !important;
   box-shadow: 0 0 24px #dc354c80 !important;
 }
+/* =========================================
+   FIXED LEFT PROFILE / SCROLLING RIGHT SIDE
+========================================= */
+
+@media (min-width: 851px) {
+
+  html,
+  body {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .portfolio {
+    width: min(calc(100% - 96px), var(--max));
+    height: 100vh;
+
+    display: grid;
+    grid-template-columns: minmax(320px, 0.95fr) minmax(0, 1.05fr);
+
+    gap: 80px;
+    align-items: stretch;
+  }
+
+  .profile {
+    position: relative;
+
+    top: auto;
+
+    height: 100vh;
+    min-height: 100vh;
+    max-height: 100vh;
+
+    overflow: hidden;
+
+    padding: 74px 0 48px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .content {
+    height: 100vh;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    padding-top: 74px;
+    padding-bottom: 80px;
+
+    scrollbar-width: thin;
+
+    scroll-behavior: smooth;
+  }
+
+}
