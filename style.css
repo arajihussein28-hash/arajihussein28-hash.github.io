@@ -236,18 +236,6 @@ a, button, .project-card {
   transition: box-shadow 0.25s, text-shadow 0.25s;
 }
 
-a:hover, button:hover, .project-card:hover {
-  box-shadow: 0 0 20px rgba(220, 53, 76, 0.45);
-  text-shadow: 0 0 8px rgba(220, 53, 76, 0.7);
-}
-.profile-nav a:hover,
-.profile-links a:hover,
-button:hover,
-.project-card:hover {
-  color: #ff6078 !important;
-  text-shadow: 0 0 12px #ff304f !important;
-  box-shadow: 0 0 24px #dc354c80 !important;
-}
 /* =========================================
    FIXED LEFT PROFILE / SCROLLING RIGHT SIDE
 ========================================= */
