@@ -292,3 +292,143 @@ a, button, .project-card {
   }
 
 }
+/* =========================
+   MINECRAFT STYLE NAME
+========================= */
+
+.minecraft-name {
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+
+  gap: 14px;
+
+  font-family: "DM Mono", monospace;
+
+  font-size: clamp(2.5rem, 4vw, 3.8rem);
+  font-weight: 700;
+
+  letter-spacing: -0.06em;
+
+  color: #f0e5e8;
+
+  text-shadow:
+    2px 2px 0 #3b2229,
+    4px 4px 0 #1e1116;
+
+  image-rendering: pixelated;
+}
+
+
+/* Typewriter */
+
+.typewriter-text {
+  display: inline-block;
+
+  overflow: hidden;
+
+  white-space: nowrap;
+
+  width: 0;
+
+  border-right: 3px solid #ee7c8b;
+
+  animation:
+    typeName 2.4s steps(13, end) forwards,
+    cursorBlink .7s step-end infinite;
+}
+
+
+@keyframes typeName {
+
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 13ch;
+  }
+
+}
+
+
+@keyframes cursorBlink {
+
+  0%,
+  100% {
+    border-color: transparent;
+  }
+
+  50% {
+    border-color: #ee7c8b;
+  }
+
+}
+
+
+/* Minecraft block dots */
+
+.name-dot {
+  width: 12px;
+  height: 12px;
+
+  background: #ee7c8b;
+
+  box-shadow:
+    2px 2px 0 #6b2331,
+    4px 4px 0 #241217;
+
+  flex-shrink: 0;
+}
+
+
+/* Left dot */
+
+.dot-left {
+  animation:
+    dotSwapLeft 2.2s ease-in-out infinite alternate;
+}
+
+
+/* Right dot */
+
+.dot-right {
+  animation:
+    dotSwapRight 2.2s ease-in-out infinite alternate;
+}
+
+
+/* Dot movement */
+
+@keyframes dotSwapLeft {
+
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(24px);
+  }
+
+}
+
+
+@keyframes dotSwapRight {
+
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-24px);
+  }
+
+}
+
+
+/* Keep A red */
+
+.red-a {
+  color: #dc354c;
+}
