@@ -318,134 +318,214 @@ a, button, .project-card {
 .red-a {
   color: #dc354c;
 }
-
-
-/* Typewriter */
-
-.name-reveal {
-  position: relative;
-  display: inline-block;
-}
-
-.typewriter-text {
-  display: inline-block;
-
-  width: 0;
-  overflow: hidden;
-  white-space: nowrap;
-
-  /* NO | CURSOR */
-  border-right: none;
-
-  animation:
-    typing 3s steps(13, end) 3.6s forwards;
-}
-
-@keyframes typing {
-  from {
-    width: 0;
-  }
-
-  to {
-    width: 12.5ch;
-  }
-}
-
 /* =========================
-   RED PAC-MAN NAME EFFECT
+   PAC-MAN NAME ANIMATION
 ========================= */
 
-.pacman-track {
-  position: absolute;
+.minecraft-name {
+  font-family: "Pixelify Sans", monospace !important;
+  font-size: clamp(2.7rem, 4.2vw, 4rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
 
-  top: 50%;
-  left: 0;
+  color: #f0e5e8;
 
-  width: calc(100% + 65px);
-  height: 42px;
-
-  transform: translateY(-50%);
-
-  pointer-events: none;
+  text-shadow:
+    3px 3px 0 #5c313b,
+    6px 6px 0 #241217;
 }
 
 
-/* RED DOT PAC-MAN EATS */
+/* Whole animation area */
 
-.pac-dot {
+.pac-scene {
+  position: relative;
+
+  display: inline-block;
+
+  width: 12.5ch;
+  height: 1.35em;
+}
+
+
+/* =========================
+   NAME
+========================= */
+
+.letter-name {
+  position: relative;
+
+  z-index: 2;
+
+  white-space: nowrap;
+}
+
+.letter-name > span:not(.name-space) {
+  display: inline-block;
+
+  opacity: 0;
+
+  transform:
+    translateY(5px)
+    scale(.7);
+
+  transition:
+    opacity .25s ease,
+    transform .25s ease;
+}
+
+
+/* Letter appears after dot eaten */
+
+.letter-name > span.show-letter {
+  opacity: 1;
+
+  transform:
+    translateY(0)
+    scale(1);
+}
+
+
+.red-a {
+  color: #dc354c;
+}
+
+
+/* =========================
+   DOTS
+========================= */
+
+.pac-dots {
   position: absolute;
 
-  left: calc(100% - 10px);
-  top: 50%;
+  z-index: 1;
 
-  width: 10px;
-  height: 10px;
+  left: 0;
+  right: 0;
 
-  background: #dc354c;
+  top: 52%;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(12, 1fr);
+
+  align-items: center;
 
   transform: translateY(-50%);
+}
+
+
+.pac-dot {
+  width: 9px;
+  height: 9px;
+
+  justify-self: center;
+
+  background: #dc354c;
 
   box-shadow:
     2px 2px 0 #6b1724;
 
-  animation:
-    eatDot 3s linear 3.6s forwards;
+  opacity: 0;
+
+  transform: scale(0);
+
+  transition:
+    opacity .3s ease,
+    transform .3s ease;
 }
 
 
-/* PAC-MAN */
+/* dots appear before Pac-Man */
+
+.pac-dot.ready {
+  opacity: 1;
+
+  transform: scale(1);
+}
+
+
+/* eaten dot */
+
+.pac-dot.eaten {
+  opacity: 0;
+
+  transform: scale(0);
+}
+
+
+/* =========================
+   PAC-MAN
+========================= */
 
 .red-pacman {
   position: absolute;
-  left: -38px;
+
+  z-index: 5;
+
+  left: -45px;
   top: 50%;
 
-  width: 34px;
-  height: 34px;
+  width: 36px;
+  height: 36px;
 
   border-radius: 50%;
+
   background: #dc354c;
 
-  transform: translateY(-50%);
+  transform:
+    translateY(-50%)
+    scale(1);
 
-  filter: drop-shadow(3px 3px 0 #65121f);
+  filter:
+    drop-shadow(3px 3px 0 #65121f);
 
-  animation:
-    pacmanMove 9s linear 3.6s forwards,
-    pacmanGrow 9s linear 3.6s forwards,
-    pacmanBurstGlow .35s ease 12.25s forwards;
+  opacity: 0;
+
+  transition:
+    left .48s ease-in-out,
+    transform .35s ease,
+    opacity .3s ease;
 }
 
-/* mouth */
+
+/* Pac-Man mouth */
+
 .red-pacman::before {
   content: "";
 
   position: absolute;
-  right: -1px;
+
+  right: -2px;
   top: 50%;
 
-  width: 18px;
-  height: 24px;
+  width: 20px;
+  height: 25px;
 
   background: var(--bg);
 
-  clip-path: polygon(100% 0, 0 50%, 100% 100%);
+  clip-path:
+    polygon(
+      100% 0,
+      0 50%,
+      100% 100%
+    );
 
-  transform: translateY(-50%) scaleY(.25);
+  transform:
+    translateY(-50%)
+    scaleY(.25);
+
   transform-origin: left center;
 
-  animation: pacMouth .42s ease-in-out 3.6s infinite alternate;
+  animation:
+    pacMouth .32s
+    ease-in-out
+    infinite alternate;
 }
 
-@keyframes pacMouth {
-  from {
-    transform: translateY(-50%) scaleY(.2);
-  }
 
-  to {
-    transform: translateY(-50%) scaleY(1);
-  }
-}
+/* eye */
 
 .red-pacman::after {
   content: "";
@@ -462,96 +542,130 @@ a, button, .project-card {
   top: 7px;
   right: 10px;
 
-  z-index: 2;
+  z-index: 10;
 }
 
 
-/* MOVE PAC-MAN ACROSS THE NAME */
+@keyframes pacMouth {
 
-@keyframes pacmanMove {
+  from {
+    transform:
+      translateY(-50%)
+      scaleY(.18);
+  }
+
+  to {
+    transform:
+      translateY(-50%)
+      scaleY(1);
+  }
+
+}
+
+
+/* =========================
+   EXPLOSION
+========================= */
+
+.pac-explosion {
+  position: absolute;
+
+  right: 0;
+  top: 50%;
+
+  width: 10px;
+  height: 10px;
+
+  transform: translateY(-50%);
+
+  pointer-events: none;
+}
+
+
+.pac-explosion i {
+  position: absolute;
+
+  width: 7px;
+  height: 7px;
+
+  background: #dc354c;
+
+  opacity: 0;
+}
+
+
+.pac-explosion.explode i {
+  animation:
+    pixelBurst .75s
+    ease-out forwards;
+}
+
+
+.pac-explosion i:nth-child(1) {
+  --x: 38px;
+  --y: -30px;
+}
+
+.pac-explosion i:nth-child(2) {
+  --x: -36px;
+  --y: -25px;
+}
+
+.pac-explosion i:nth-child(3) {
+  --x: 40px;
+  --y: 15px;
+}
+
+.pac-explosion i:nth-child(4) {
+  --x: -42px;
+  --y: 18px;
+}
+
+.pac-explosion i:nth-child(5) {
+  --x: 15px;
+  --y: 40px;
+}
+
+.pac-explosion i:nth-child(6) {
+  --x: -15px;
+  --y: -42px;
+}
+
+.pac-explosion i:nth-child(7) {
+  --x: 50px;
+  --y: 2px;
+}
+
+.pac-explosion i:nth-child(8) {
+  --x: -50px;
+  --y: 0;
+}
+
+
+@keyframes pixelBurst {
+
   0% {
-    left: -38px;
     opacity: 1;
-  }
 
-  92% {
-    left: calc(100% - 22px);
-    opacity: 1;
-  }
-
-  100% {
-    left: calc(100% - 22px);
-    opacity: 0;
-  }
-}
-@keyframes pacmanGrow {
-  0% {
-    scale: 1;
-  }
-
-  10% {
-    scale: 1.04;
-  }
-
-  20% {
-    scale: 1.08;
-  }
-
-  30% {
-    scale: 1.12;
-  }
-
-  40% {
-    scale: 1.16;
-  }
-
-  50% {
-    scale: 1.20;
-  }
-
-  60% {
-    scale: 1.25;
-  }
-
-  70% {
-    scale: 1.30;
-  }
-
-  80% {
-    scale: 1.38;
-  }
-
-  90% {
-    scale: 1.48;
-  }
-
-  100% {
-    scale: 1.7;
-  }
-}
-
-
-/* Dot disappears when Pac-Man reaches it */
-
-@keyframes eatDot {
-
-  0%,
-  85% {
-    opacity: 1;
-    transform: translateY(-50%) scale(1);
-  }
-
-  92% {
-    opacity: 1;
-    transform: translateY(-50%) scale(.5);
+    transform:
+      translate(0, 0)
+      scale(1.4);
   }
 
   100% {
     opacity: 0;
-    transform: translateY(-50%) scale(0);
+
+    transform:
+      translate(
+        var(--x),
+        var(--y)
+      )
+      scale(.2);
   }
 
 }
+
+
 @keyframes pacmanBurstGlow {
   from {
     filter:
