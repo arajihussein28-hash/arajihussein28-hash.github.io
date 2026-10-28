@@ -300,7 +300,6 @@ a, button, .project-card {
   position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 14px;
 
    font-family: "Pixelify Sans", monospace !important;
   font-size: clamp(2.7rem, 4.2vw, 4rem);
@@ -316,23 +315,30 @@ a, button, .project-card {
     6px 6px 0 #241217;
 
 }
+.red-a {
+  color: #dc354c;
+}
 
 
 /* Typewriter */
 
+.name-reveal {
+  position: relative;
+  display: inline-block;
+}
+
 .typewriter-text {
   display: inline-block;
 
-  white-space: nowrap;
-  overflow: hidden;
-
   width: 0;
+  overflow: hidden;
+  white-space: nowrap;
 
-  border-right: 3px solid #ee7c8b;
+  /* NO | CURSOR */
+  border-right: none;
 
   animation:
-    typing 2.8s steps(13, end) 3.6s forwards,
-    blinkCursor .7s step-end 3.6s infinite;
+    typing 3s steps(13, end) 3.6s forwards;
 }
 
 @keyframes typing {
@@ -345,14 +351,171 @@ a, button, .project-card {
   }
 }
 
-@keyframes blinkCursor {
-  0%,
-  100% {
-    border-color: transparent;
+/* =========================
+   RED PAC-MAN NAME EFFECT
+========================= */
+
+.pacman-track {
+  position: absolute;
+
+  top: 50%;
+  left: 0;
+
+  width: calc(100% + 65px);
+  height: 42px;
+
+  transform: translateY(-50%);
+
+  pointer-events: none;
+}
+
+
+/* RED DOT PAC-MAN EATS */
+
+.pac-dot {
+  position: absolute;
+
+  left: calc(100% - 10px);
+  top: 50%;
+
+  width: 10px;
+  height: 10px;
+
+  background: #dc354c;
+
+  transform: translateY(-50%);
+
+  box-shadow:
+    2px 2px 0 #6b1724;
+
+  animation:
+    eatDot 3s linear 3.6s forwards;
+}
+
+
+/* PAC-MAN */
+
+.red-pacman {
+  position: absolute;
+
+  left: -38px;
+  top: 50%;
+
+  width: 34px;
+  height: 34px;
+
+  border-radius: 50%;
+
+  background:
+    conic-gradient(
+      from 35deg,
+      #dc354c 0deg 290deg,
+      transparent 290deg 360deg
+    );
+
+  transform: translateY(-50%);
+
+  filter:
+    drop-shadow(3px 3px 0 #65121f);
+
+  animation:
+    pacmanMove 3s linear 3.6s forwards;
+}
+.red-pacman {
+  /* keep your existing Pac-Man styles */
+
+  animation:
+    pacmanMove 3s linear 3.6s forwards,
+    pacmanBurstGlow .25s ease 6.25s forwards;
+}
+
+
+/* Pac-Man eye */
+
+.red-pacman::after {
+  content: "";
+
+  position: absolute;
+
+  width: 5px;
+  height: 5px;
+
+  background: #10090c;
+
+  border-radius: 50%;
+
+  top: 7px;
+  left: 17px;
+}
+
+
+/* MOVE PAC-MAN ACROSS THE NAME */
+
+@keyframes pacmanMove {
+  0% {
+    left: -38px;
+    transform: translateY(-50%) scale(1);
+    opacity: 1;
   }
 
-  50% {
-    border-color: #ee7c8b;
+  82% {
+    left: calc(100% - 22px);
+    transform: translateY(-50%) scale(1);
+    opacity: 1;
+  }
+
+  90% {
+    left: calc(100% - 22px);
+    transform: translateY(-50%) scale(1.35);
+    opacity: 1;
+  }
+
+  96% {
+    left: calc(100% - 22px);
+    transform: translateY(-50%) scale(.8);
+    opacity: 1;
+  }
+
+  100% {
+    left: calc(100% - 22px);
+    transform: translateY(-50%) scale(1.8);
+    opacity: 0;
+  }
+}
+
+
+/* Dot disappears when Pac-Man reaches it */
+
+@keyframes eatDot {
+
+  0%,
+  85% {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
+  }
+
+  92% {
+    opacity: 1;
+    transform: translateY(-50%) scale(.5);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-50%) scale(0);
+  }
+
+}
+@keyframes pacmanBurstGlow {
+  from {
+    filter:
+      drop-shadow(3px 3px 0 #65121f)
+      drop-shadow(0 0 0 rgba(220,53,76,0));
+  }
+
+  to {
+    filter:
+      drop-shadow(3px 3px 0 #65121f)
+      drop-shadow(0 0 25px rgba(220,53,76,.9));
   }
 }
 
@@ -360,67 +523,3 @@ a, button, .project-card {
 /* =========================
    SWAPPING DOTS AFTER NAME
 ========================= */
-
-.dot-group {
-  position: relative;
-
-  width: 34px;
-  height: 14px;
-
-  margin-left: 12px;
-
-  flex-shrink: 0;
-}
-
-.name-dot {
-  position: absolute;
-  top: 1px;
-
-  width: 10px;
-  height: 10px;
-
-  background: #ee7c8b;
-
-  box-shadow:
-    2px 2px 0 #6b2331,
-    4px 4px 0 #241217;
-}
-
-.dot-one {
-  left: 0;
-  animation: swapDotOne 1.8s ease-in-out infinite;
-}
-
-.dot-two {
-  left: 22px;
-  animation: swapDotTwo 1.8s ease-in-out infinite;
-}
-
-@keyframes swapDotOne {
-  0%,
-  100% {
-    left: 0;
-  }
-
-  50% {
-    left: 22px;
-  }
-}
-
-@keyframes swapDotTwo {
-  0%,
-  100% {
-    left: 22px;
-  }
-
-  50% {
-    left: 0;
-  }
-}
-
-
-/* Keep A red */
-
-.red-a {
-  color: #dc354c;
-}
