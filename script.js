@@ -78,3 +78,116 @@ function finishIntro() {
 document.getElementById("skipIntro").addEventListener("click", finishIntro);
 document.addEventListener("keydown", e => { if (e.key === "Escape") finishIntro(); });
 setTimeout(finishIntro, window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 1600 : 2800);
+
+function createAudioContext() {
+  return new (window.AudioContext || window.webkitAudioContext)();
+}
+
+let pacAudio;
+
+function getPacAudio() {
+  if (!pacAudio) {
+    pacAudio = createAudioContext();
+  }
+
+  if (pacAudio.state === "suspended") {
+    pacAudio.resume();
+  }
+
+  return pacAudio;
+}
+
+function playEatSound() {
+  const audio = getPacAudio();
+
+  const oscillator = audio.createOscillator();
+  const gain = audio.createGain();
+
+  oscillator.type = "square";
+
+  oscillator.frequency.setValueAtTime(
+    240,
+    audio.currentTime
+  );
+
+  oscillator.frequency.exponentialRampToValueAtTime(
+    140,
+    audio.currentTime + 0.08
+  );
+
+  gain.gain.setValueAtTime(
+    0.08,
+    audio.currentTime
+  );
+
+  gain.gain.exponentialRampToValueAtTime(
+    0.001,
+    audio.currentTime + 0.1
+  );
+
+  oscillator.connect(gain);
+  gain.connect(audio.destination);
+
+  oscillator.start();
+  oscillator.stop(audio.currentTime + 0.1);
+}
+  function playExplosionSound() {
+  const audio = getPacAudio();
+
+  const duration = 0.45;
+
+  const buffer = audio.createBuffer(
+    1,
+    audio.sampleRate * duration,
+    audio.sampleRate
+  );
+
+  const data = buffer.getChannelData(0);
+
+  for (let i = 0; i < data.length; i++) {
+    data[i] =
+      (Math.random() * 2 - 1) *
+      (1 - i / data.length);
+  }
+
+  const source = audio.createBufferSource();
+  const gain = audio.createGain();
+
+  source.buffer = buffer;
+
+  gain.gain.setValueAtTime(
+    0.25,
+    audio.currentTime
+  );
+
+  gain.gain.exponentialRampToValueAtTime(
+    0.001,
+    audio.currentTime + duration
+  );
+
+  source.connect(gain);
+  gain.connect(audio.destination);
+
+  source.start();
+}
+    window.addEventListener("load", () => {
+
+  const START = 3600;
+  const DOT_INTERVAL = 650;
+
+  const letters = "HUSSEINARAJI";
+
+  letters.split("").forEach((letter, index) => {
+
+    setTimeout(() => {
+      playEatSound();
+    }, START + index * DOT_INTERVAL);
+
+  });
+
+setTimeout(() => {
+  playExplosionSound();
+}, 12400);
+
+});
+
