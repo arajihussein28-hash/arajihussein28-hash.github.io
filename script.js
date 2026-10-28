@@ -289,6 +289,13 @@ window.addEventListener("load", () => {
         /* eat dot */
 
         dot.classList.add("eaten");
+        const dotRect = dot.getBoundingClientRect();
+const pacRect = pacman.getBoundingClientRect();
+
+const suckX =
+  (pacRect.right - dotRect.left) - 7;
+
+dot.style.setProperty("--suck-x", `${suckX}px`); 
 
 
         /* reveal corresponding letter */
@@ -320,7 +327,7 @@ window.addEventListener("load", () => {
         */
 
         const growth =
-          1 + ((current + 1) * 0.055);
+          1 + ((current + 1) * 0.04);
 
 
         pacman.style.transform =
