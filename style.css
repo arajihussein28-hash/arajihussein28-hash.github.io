@@ -304,9 +304,9 @@ a, button, .project-card {
 
    font-family: "Pixelify Sans", monospace !important;
   font-size: clamp(2.7rem, 4.2vw, 4rem);
-  font-weight: 900;
+  font-weight: 700;
 
-  letter-spacing: -0.08em;
+  letter-spacing: -0.03em;
   text-transform: none;
 
   color: #f0e5e8;
@@ -315,7 +315,6 @@ a, button, .project-card {
     3px 3px 0 #5c313b,
     6px 6px 0 #241217;
 
-  image-rendering: pixelated;
 }
 
 
@@ -332,7 +331,7 @@ a, button, .project-card {
   border-right: 3px solid #ee7c8b;
 
   animation:
-    typing 2.4s steps(13, end) forwards,
+    typing 2.4s steps(13, end) 3.6s forwards,
     blinkCursor .7s step-end 3.6s infinite;
 }
 
