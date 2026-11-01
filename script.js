@@ -563,32 +563,45 @@ setTimeout(() => {
   let followingClick = false;
 
   function moveTo(link) {
-    if (!link) return;
-    selected = link;
+  if (!link) return;
+  selected = link;
 
-    const navBox = nav.getBoundingClientRect();
-    const linkBox = link.getBoundingClientRect();
+  const walker = document.createTreeWalker(
+    link,
+    NodeFilter.SHOW_TEXT
+  );
 
-    const y =
-      linkBox.top - navBox.top +
-      (linkBox.height - man.offsetHeight) / 2;
+  let lastNode = null;
+  let node;
 
-    // Follow both vertical and horizontal navigation layouts.
-    // Measure the actual word, not the full link width.
-const textRange = document.createRange();
-textRange.selectNodeContents(link);
-
-const wordBox = textRange.getBoundingClientRect();
-const x = wordBox.right - navBox.left + 8;
-
-    man.style.transform = `translate(${x}px, ${y}px)`;
-    man.classList.add("is-moving");
-
-    clearTimeout(walkTimer);
-    walkTimer = setTimeout(() => {
-      man.classList.remove("is-moving");
-    }, 420);
+  while ((node = walker.nextNode())) {
+    if (node.textContent.trim()) {
+      lastNode = node;
+    }
   }
+
+  if (!lastNode) return;
+
+  const end = lastNode.textContent.trimEnd().length;
+  const range = document.createRange();
+
+  range.setStart(lastNode, end - 1);
+  range.setEnd(lastNode, end);
+
+  const letterBox = range.getBoundingClientRect();
+  const navBox = nav.getBoundingClientRect();
+
+  const x =
+    letterBox.left - navBox.left +
+    letterBox.width / 2 -
+    man.offsetWidth / 2;
+
+  const y =
+    letterBox.top - navBox.top -
+    man.offsetHeight - 1;
+
+  man.style.transform = `translate(${x}px, ${y}px)`;
+}
 
   function followActiveSection() {
     if (followingClick) return;
@@ -629,3 +642,4 @@ const x = wordBox.right - navBox.left + 8;
   followActiveSection();
   document.fonts.ready.then(() => moveTo(selected));
 })();
+
