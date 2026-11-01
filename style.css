@@ -904,4 +904,11 @@ body::-webkit-scrollbar,
     cursor: text;
   }
 }
+/* Hide scrollbars while keeping scrolling working */
+* {
+  scrollbar-width: none;
+}
 
+*::-webkit-scrollbar {
+  display: none;
+}
