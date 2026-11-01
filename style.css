@@ -627,5 +627,142 @@ a, button, .project-card {
   right: 0;
   top: 50%;
 }
+/* Pac-Man gets increasingly full, then trembles */
+.red-pacman.pac-panicking {
+  overflow: visible;
+  animation: pacPanic 2.4s ease-in forwards;
+}
+
+/* Replace his normal eye and mouth during the panic */
+.red-pacman.pac-panicking::before,
+.red-pacman.pac-panicking::after {
+  display: none;
+}
+
+@keyframes pacPanic {
+  0% {
+    transform: translateY(-50%) scale(1.8);
+  }
+  35% {
+    transform: translateY(-50%) scale(2.2, 2.05);
+  }
+  65% {
+    transform: translateY(-50%) scale(2.65, 2.4);
+  }
+  80% {
+    transform: translate(-3px, -50%) scale(2.85, 2.6);
+  }
+  85% {
+    transform: translate(3px, -50%) scale(2.9, 2.65);
+  }
+  90% {
+    transform: translate(-4px, -50%) scale(3, 2.75);
+  }
+  95% {
+    transform: translate(4px, -50%) scale(3.1, 2.8);
+  }
+  100% {
+    transform: translateY(-50%) scale(3.25, 3);
+  }
+}
+
+/* Wide eyes */
+.pac-worried-eye {
+  position: absolute;
+  top: 20%;
+  width: 23%;
+  height: 31%;
+  background: #fff5ee;
+  border-radius: 50%;
+}
+
+.pac-worried-eye.left { left: 20%; }
+.pac-worried-eye.right { right: 20%; }
+
+.pac-worried-eye::after {
+  content: "";
+  position: absolute;
+  bottom: 12%;
+  left: 34%;
+  width: 35%;
+  height: 46%;
+  background: #210b12;
+  border-radius: 50%;
+}
+
+/* Raised, worried eyebrows */
+.pac-worried-eye::before {
+  content: "";
+  position: absolute;
+  top: -28%;
+  left: -5%;
+  width: 110%;
+  height: 17%;
+  background: #210b12;
+  border-radius: 3px;
+}
+
+.pac-worried-eye.left::before {
+  transform: rotate(-22deg);
+}
+
+.pac-worried-eye.right::before {
+  transform: rotate(22deg);
+}
+
+/* Small frightened mouth */
+.pac-worried-mouth {
+  position: absolute;
+  left: 40%;
+  top: 65%;
+  width: 20%;
+  height: 23%;
+  border: 2px solid #210b12;
+  border-radius: 50%;
+  background: #5b1021;
+}
+
+/* Screen-wide splatter, without blocking clicks */
+.pac-splatter-layer {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 100000;
+}
+
+.pac-screen-drop {
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: 45% 55% 60% 40%;
+  background: #dc354c;
+  box-shadow:
+    inset 2px 2px 0 #ff829477,
+    0 2px 4px #610d2466;
+  will-change: transform, opacity;
+}
+
+/* A thin trail grows down from each splat */
+.pac-screen-drop::after {
+  content: "";
+  position: absolute;
+  top: 55%;
+  left: 38%;
+  width: 24%;
+  height: var(--drip-length);
+  border-radius: 0 0 999px 999px;
+  background: #dc354c;
+  transform: scaleY(0);
+  transform-origin: top;
+}
+
+.pac-screen-drop.dripping::after {
+  animation: pacDrip 1.8s ease-in forwards;
+}
+
+@keyframes pacDrip {
+  to { transform: scaleY(1); }
+}
 
 
