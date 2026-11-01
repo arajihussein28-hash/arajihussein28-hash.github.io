@@ -600,5 +600,27 @@ a, button, .project-card {
     pixelBurst .75s
     ease-out forwards;
 }
+/* Remove extra spacing between letters */
+.letter-name {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0;
+}
+
+/* Keep a space only between Hussein and Araji */
+.letter-name > .name-space {
+  width: 0.3em;
+}
+
+/* Let the i use its normal width */
+.letter-name > .i-letter {
+  min-width: 0;
+}
+
+/* Stop the H from being shifted outside the profile */
+.pac-scene {
+  margin-left: 0;
+  width: max-content;
+}
 
 
