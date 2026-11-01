@@ -305,13 +305,15 @@ dot.style.setProperty("--suck-x", `${suckX}px`);
 
         /* reveal corresponding letter */
 
-        if (allNameSpans[current]) {
+      // Remember this letter before "current" increases.
+const letterToReveal = allNameSpans[current];
 
-          allNameSpans[current]
-            .classList
-            .add("show-letter");
-
-        }
+// Show the letter after the dot finishes disappearing.
+setTimeout(() => {
+  if (letterToReveal) {
+    letterToReveal.classList.add("show-letter");
+  }
+}, 280);
 
 
         /* eating sound */
