@@ -467,7 +467,6 @@ a, button, .project-card {
 
   opacity: 0;
 
-.red-pacman {
   transition:
     left .55s ease-in-out,
     transform .5s cubic-bezier(.2,.8,.2,1),
