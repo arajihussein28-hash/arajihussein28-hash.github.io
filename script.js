@@ -517,3 +517,110 @@ setTimeout(() => {
   }
 }
   });
+
+(() => {
+  const nav = document.getElementById("navLinks");
+
+  if (!nav || nav.querySelector(".nav-pixel-man")) return;
+
+  const links = [...nav.querySelectorAll('a[href^="#"]')];
+  if (!links.length) return;
+
+  const man = document.createElement("span");
+  man.className = "nav-pixel-man";
+  man.setAttribute("aria-hidden", "true");
+
+  man.innerHTML = `
+    <svg viewBox="0 0 12 16"
+         xmlns="http://www.w3.org/2000/svg"
+         shape-rendering="crispEdges">
+      <!-- Hair -->
+      <path fill="#432a23" d="M4 0h4v1H3v3h6V1H8V0z"/>
+
+      <!-- Face -->
+      <path fill="#f4c49a" d="M4 2h4v4H4z"/>
+      <path fill="#160b11" d="M7 3h1v1H7z"/>
+
+      <!-- Red shirt -->
+      <path fill="#ee526b" d="M3 6h6v5H3z"/>
+
+      <!-- Arms -->
+      <path fill="#f4c49a" d="M1 7h2v5H1zM9 7h2v5H9z"/>
+
+      <!-- Trousers -->
+      <path fill="#82b9de" d="M3 11h6v2H3zM3 13h2v2H3zM7 13h2v2H7z"/>
+
+      <!-- Shoes -->
+      <path fill="#f0e5e8" d="M2 15h3v1H2zM7 15h3v1H7z"/>
+    </svg>
+  `;
+
+  nav.appendChild(man);
+
+  let selected = links[0];
+  let walkTimer;
+  let clickTimer;
+  let followingClick = false;
+
+  function moveTo(link) {
+    if (!link) return;
+    selected = link;
+
+    const navBox = nav.getBoundingClientRect();
+    const linkBox = link.getBoundingClientRect();
+
+    const y =
+      linkBox.top - navBox.top +
+      (linkBox.height - man.offsetHeight) / 2;
+
+    // Follow both vertical and horizontal navigation layouts.
+    const x = linkBox.left - navBox.left;
+
+    man.style.transform = `translate(${x}px, ${y}px)`;
+    man.classList.add("is-moving");
+
+    clearTimeout(walkTimer);
+    walkTimer = setTimeout(() => {
+      man.classList.remove("is-moving");
+    }, 420);
+  }
+
+  function followActiveSection() {
+    if (followingClick) return;
+
+    const active = links.find(link =>
+      link.classList.contains("active") ||
+      link.getAttribute("aria-current") === "location"
+    );
+
+    moveTo(active || selected);
+  }
+
+  links.forEach(link => {
+    link.addEventListener("click", () => {
+      followingClick = true;
+      moveTo(link);
+
+      clearTimeout(clickTimer);
+      clickTimer = setTimeout(() => {
+        followingClick = false;
+        followActiveSection();
+      }, 1000);
+    });
+  });
+
+  // Watch your existing navigation highlighting.
+  const observer = new MutationObserver(followActiveSection);
+
+  links.forEach(link => {
+    observer.observe(link, {
+      attributes: true,
+      attributeFilter: ["class", "aria-current"]
+    });
+  });
+
+  window.addEventListener("resize", () => moveTo(selected));
+
+  followActiveSection();
+  document.fonts.ready.then(() => moveTo(selected));
+})();
