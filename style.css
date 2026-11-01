@@ -955,3 +955,45 @@ body::-webkit-scrollbar,
     animation: none;
   }
 }
+/* Smaller character beside the end of each word */
+.nav-pixel-man {
+  left: 0;
+  width: 12px;
+  height: 16px;
+  transition: transform 0.4s ease;
+}
+
+/* Keep hopping, even when standing still */
+.nav-pixel-man svg,
+.nav-pixel-man.is-moving svg {
+  animation: nav-man-hop 0.8s ease-in-out infinite;
+}
+
+@keyframes nav-man-hop {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  45% {
+    transform: translateY(-8px);
+  }
+
+  65% {
+    transform: translateY(0);
+  }
+
+  80% {
+    transform: translateY(-2px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-pixel-man {
+    transition: none;
+  }
+
+  .nav-pixel-man svg,
+  .nav-pixel-man.is-moving svg {
+    animation: none;
+  }
+}
