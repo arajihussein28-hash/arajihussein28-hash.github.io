@@ -67,6 +67,7 @@ const SITE_DATA = {
     "JavaScript-powered interactions",
     "Deployed with GitHub Pages"
   ],
+      image: "assets/projects/Screenshot 2026-11-01 143327.png",
 
   github: "https://github.com/arajihussein28-hash/Big-5-challenge",
 
