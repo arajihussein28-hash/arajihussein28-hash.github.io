@@ -268,16 +268,21 @@ window.addEventListener("load", () => {
         Move Pac-Man to current dot
       */
 
-      const dotCenter =
-        dot.offsetLeft +
-        dot.offsetWidth / 2;
+const scene = document.querySelector(".pac-scene");
 
-      const pacSize =
-        pacman.offsetWidth;
+const sceneRect = scene.getBoundingClientRect();
+const dotRect = dot.getBoundingClientRect();
+const pacRect = pacman.getBoundingClientRect();
 
+// Dot centre measured from the animation area's left edge.
+const dotCenter =
+  dotRect.left - sceneRect.left + dotRect.width / 2;
 
-      pacman.style.left =
-        `${dotCenter - pacSize * 0.72}px`;
+// Account for Pac-Man growing after each dot.
+const mouthOffset =
+  pacman.offsetWidth / 2 + pacRect.width * 0.22;
+
+pacman.style.left = `${dotCenter - mouthOffset}px`;
 
 
       /*
@@ -348,7 +353,7 @@ dot.style.setProperty("--suck-x", `${suckX}px`);
         );
 
 
-      }, CHOMP_TIME * 0.72);
+ }, 550);
 
     }
 
