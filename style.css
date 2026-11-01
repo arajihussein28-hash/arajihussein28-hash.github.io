@@ -815,5 +815,11 @@ a, button, .project-card {
     transform: translateY(-1px) rotate(-25deg);
   }
 }
-
+/* Allow the whole Pac-Man to remain visible. */
+.profile,
+.profile-top,
+.minecraft-name,
+.pac-scene {
+  overflow: visible;
+}
 
