@@ -622,5 +622,10 @@ a, button, .project-card {
   margin-left: 0;
   width: max-content;
 }
+.pac-dots {
+  left: 0;
+  right: 0;
+  top: 50%;
+}
 
 
