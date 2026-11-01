@@ -822,4 +822,45 @@ a, button, .project-card {
 .pac-scene {
   overflow: visible;
 }
+/* Pixel font throughout the website */
+body,
+body * {
+  font-family: "Pixelify Sans", monospace !important;
+}
+
+/* Make paragraph text easier to read */
+.profile-intro,
+.about-copy,
+.timeline-desc,
+.project-copy > p,
+.contact-section > p,
+.modal-body {
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+/* Keep small labels readable */
+.eyebrow,
+.section-label,
+.project-meta,
+.timeline-date,
+.profile-nav .nav-links a {
+  font-size: 12px;
+}
+
+/* Square corners for a retro appearance */
+.project-image,
+.project-card,
+.timeline-row,
+.modal-card,
+.project-tags span,
+.skill-items span,
+.intro-skip {
+  border-radius: 0;
+}
+
+/* Square buttons */
+.back-to-top {
+  border-radius: 0;
+}
 
