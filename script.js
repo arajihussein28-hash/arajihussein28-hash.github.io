@@ -574,7 +574,12 @@ setTimeout(() => {
       (linkBox.height - man.offsetHeight) / 2;
 
     // Follow both vertical and horizontal navigation layouts.
-    const x = linkBox.left - navBox.left;
+    // Measure the actual word, not the full link width.
+const textRange = document.createRange();
+textRange.selectNodeContents(link);
+
+const wordBox = textRange.getBoundingClientRect();
+const x = wordBox.right - navBox.left + 8;
 
     man.style.transform = `translate(${x}px, ${y}px)`;
     man.classList.add("is-moving");
