@@ -863,4 +863,45 @@ body * {
 .back-to-top {
   border-radius: 0;
 }
+/* Hide scrollbars while keeping scrolling enabled */
+html,
+body,
+.content {
+  scrollbar-width: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+.content::-webkit-scrollbar {
+  display: none;
+}
+
+/* Pixel-style mouse cursor */
+:root {
+  --pixel-cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 16 16' shape-rendering='crispEdges'%3E%3Cpath fill='%2310090c' d='M1 1h2v2h2v2h2v2h2v2h2v2H7v2h2v3H6v-3H4v-2H3v2H1z'/%3E%3Cpath fill='%23f0e5e8' d='M2 2h1v2h2v2h2v2h2v2H6v3h2v2H7v-3H5v-2H4v1H3v1H2z'/%3E%3C/svg%3E") 2 2, auto;
+
+  --pixel-link-cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 16 16' shape-rendering='crispEdges'%3E%3Cpath fill='%2310090c' d='M1 1h2v2h2v2h2v2h2v2h2v2H7v2h2v3H6v-3H4v-2H3v2H1z'/%3E%3Cpath fill='%23ee7c8b' d='M2 2h1v2h2v2h2v2h2v2H6v3h2v2H7v-3H5v-2H4v1H3v1H2z'/%3E%3C/svg%3E") 2 2, pointer;
+}
+
+@media (pointer: fine) {
+  body,
+  body * {
+    cursor: var(--pixel-cursor);
+  }
+
+  a,
+  a *,
+  button,
+  button *,
+  [role="button"],
+  [role="button"] * {
+    cursor: var(--pixel-link-cursor);
+  }
+
+  input,
+  textarea,
+  [contenteditable="true"] {
+    cursor: text;
+  }
+}
 
