@@ -369,52 +369,151 @@ setTimeout(() => {
      FINAL EXPLOSION
   ========================= */
 
-  function finishPacman() {
-    pacman.style.transform =
-  "translateY(-50%) scale(1.75)";
+ async function finishPacman() {
+  const wait = ms =>
+    new Promise(resolve => setTimeout(resolve, ms));
 
-    /*
-      He is very full
-    */
-
-    pacman.style.transform =
-      "translateY(-50%) scale(1.9)";
-
-
-    setTimeout(() => {
-
-      /*
-        Hide Pac-Man
-      */
-
-      pacman.style.opacity = "0";
-
-
-      /*
-        Explosion pixels
-      */
-
-      explosion.classList.add(
-        "explode"
-      );
-
-
-      /*
-        Explosion sound
-      */
-
-      if (
-        typeof playExplosionSound ===
-        "function"
-      ) {
-
-        playExplosionSound();
-
-      }
-
-    }, 550);
-
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    pacman.style.opacity = "0";
+    allNameSpans.forEach(letter =>
+      letter.classList.add("show-letter")
+    );
+    return;
   }
 
-});
+  // Add a worried face.
+  pacman.innerHTML = `
+    <span class="pac-worried-eye left"></span>
+    <span class="pac-worried-eye right"></span>
+    <span class="pac-worried-mouth"></span>
+  `;
 
+  pacman.classList.add("pac-panicking");
+
+  // Wait for inflation and trembling to finish.
+  await Promise.all(
+    pacman.getAnimations().map(animation =>
+      animation.finished.catch(() => {})
+    )
+  );
+
+  // Measure the burst point before hiding Pac-Man.
+  const rect = pacman.getBoundingClientRect();
+  const originX = rect.left + rect.width / 2;
+  const originY = rect.top + rect.height / 2;
+
+  pacman.style.opacity = "0";
+
+  if (typeof playExplosionSound === "function") {
+    try {
+      playExplosionSound();
+    } catch {
+      // The visual effect still runs if audio is unavailable.
+    }
+  }
+
+  const layer = document.createElement("div");
+  layer.className = "pac-splatter-layer";
+  layer.setAttribute("aria-hidden", "true");
+  document.body.appendChild(layer);
+
+  const screenWidth = window.innerWidth;
+  const screenHeight = window.innerHeight;
+
+  async function sprayDrop() {
+    const drop = document.createElement("span");
+    drop.className = "pac-screen-drop";
+
+    const size = 8 + Math.random() * 24;
+    const targetX = Math.random() * screenWidth;
+    const targetY = Math.random() * screenHeight;
+
+    drop.style.width = `${size}px`;
+    drop.style.height = `${size}px`;
+    drop.style.setProperty(
+      "--drip-length",
+      `${35 + Math.random() * 130}px`
+    );
+
+    layer.appendChild(drop);
+
+    const start = `
+      translate(${originX - size / 2}px, ${originY - size / 2}px)
+      scale(0.15)
+    `;
+
+    const landing = `
+      translate(${targetX}px, ${targetY}px)
+      scale(1)
+    `;
+
+    // Spray outward from Pac-Man and hit the screen.
+    const flight = drop.animate(
+      [
+        { transform: start, opacity: 1 },
+        {
+          transform: `
+            translate(${targetX}px, ${targetY}px)
+            scale(1.45, 0.7)
+          `,
+          opacity: 1,
+          offset: 0.85
+        },
+        { transform: landing, opacity: 1 }
+      ],
+      {
+        duration: 350 + Math.random() * 400,
+        easing: "cubic-bezier(.15,.65,.3,1)",
+        fill: "forwards"
+      }
+    );
+
+    await flight.finished;
+
+    drop.style.transform = landing;
+    flight.cancel();
+
+    // Splats stick briefly, then form drips.
+    await wait(100 + Math.random() * 500);
+    drop.classList.add("dripping");
+
+    const fall = drop.animate(
+      [
+        { transform: landing, opacity: 1 },
+        {
+          transform: `
+            translate(${targetX}px, ${targetY + 65}px)
+            scale(0.9, 1.15)
+          `,
+          opacity: 1,
+          offset: 0.65
+        },
+        {
+          transform: `
+            translate(${targetX}px, ${screenHeight + 180}px)
+            scale(0.7, 1.6)
+          `,
+          opacity: 0
+        }
+      ],
+      {
+        duration: 2400 + Math.random() * 1400,
+        easing: "ease-in",
+        fill: "forwards"
+      }
+    );
+
+    await fall.finished;
+    drop.remove();
+  }
+
+  // Scatter droplets across the entire viewport.
+  try {
+    await Promise.all(
+      Array.from({ length: 48 }, () => sprayDrop())
+    );
+  } finally {
+    layer.remove();
+  }
+}
+  }); 
