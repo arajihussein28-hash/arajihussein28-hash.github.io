@@ -638,34 +638,26 @@ a, button, .project-card {
 .red-pacman.pac-panicking::after {
   display: none;
 }
-
 @keyframes pacPanic {
   0% {
-    transform: translateY(-50%) scale(1.8);
+    transform: translateY(-50%) scale(1.78);
   }
-  35% {
-    transform: translateY(-50%) scale(2.2, 2.05);
+  40% {
+    transform: translateY(-50%) scale(2.15, 2.05);
   }
-  65% {
-    transform: translateY(-50%) scale(2.65, 2.4);
+  70% {
+    transform: translateY(-50%) scale(2.65, 2.5);
   }
-  80% {
-    transform: translate(-3px, -50%) scale(2.85, 2.6);
+  86% {
+    transform: translate(-1px, -50%) scale(2.9, 2.75);
   }
-  85% {
-    transform: translate(3px, -50%) scale(2.9, 2.65);
-  }
-  90% {
-    transform: translate(-4px, -50%) scale(3, 2.75);
-  }
-  95% {
-    transform: translate(4px, -50%) scale(3.1, 2.8);
+  93% {
+    transform: translate(1px, -50%) scale(3.05, 2.9);
   }
   100% {
     transform: translateY(-50%) scale(3.25, 3);
   }
 }
-
 /* Wide eyes */
 .pac-worried-eye {
   position: absolute;
@@ -763,6 +755,65 @@ a, button, .project-card {
 
 @keyframes pacDrip {
   to { transform: scaleY(1); }
+}
+.red-pacman.pac-panicking {
+  animation: pacPanic 3.2s ease-in-out forwards;
+}
+
+/* Keep the normal eating rhythm. */
+.red-pacman.pac-panicking::before {
+  animation: pacMouth .32s ease-in-out infinite alternate;
+}
+
+/* Gradually widen his original eye. */
+.red-pacman.pac-panicking::after {
+  width: 5px;
+  height: 5px;
+  top: 7px;
+  right: 10px;
+  transform-origin: center;
+  animation: pacEyeWorry 3.2s ease-in-out forwards;
+}
+
+@keyframes pacEyeWorry {
+  0%, 15% {
+    transform: translateY(0) scale(1);
+  }
+  60% {
+    transform: translateY(-1px) scale(1.1, 1.35);
+  }
+  100% {
+    transform: translateY(-1px) scale(1.2, 1.6);
+  }
+}
+
+/* Fade in the eyebrow and slowly tilt it. */
+.pac-worried-brow {
+  position: absolute;
+  top: 2px;
+  right: 8px;
+  width: 10px;
+  height: 2px;
+  background: #10090c;
+  border-radius: 2px;
+  z-index: 11;
+  opacity: 0;
+  animation: pacBrowWorry 3.2s ease-in-out forwards;
+}
+
+@keyframes pacBrowWorry {
+  0%, 15% {
+    opacity: 0;
+    transform: translateY(2px) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0) rotate(-12deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(-1px) rotate(-25deg);
+  }
 }
 
 
