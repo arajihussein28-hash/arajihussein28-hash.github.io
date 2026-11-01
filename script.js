@@ -1,4 +1,4 @@
-const D = SITE_DATA;
+  const D = SITE_DATA;
 const $ = id => document.getElementById(id);
 const escapeHTML = text => String(text).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const tagList = tags => tags.map(t => '<span>'+escapeHTML(t)+'</span>').join('');
@@ -516,4 +516,123 @@ setTimeout(() => {
     layer.remove();
   }
 }
-  }); 
+  (() => {
+  const menu = document.getElementById("navLinks");
+  if (!menu || menu.querySelector(".pixel-guide")) return;
+
+  const links = [
+    ...menu.querySelectorAll('a[href^="#"]')
+  ];
+
+  if (!links.length) return;
+
+  const robot = document.createElement("span");
+  robot.className = "pixel-guide";
+  robot.setAttribute("aria-hidden", "true");
+
+  robot.innerHTML = `
+    <svg viewBox="0 0 13 16"
+         xmlns="http://www.w3.org/2000/svg"
+         shape-rendering="crispEdges">
+      <!-- Antenna -->
+      <path fill="#ee7c8b" d="M6 0h1v3H6z"/>
+      <path fill="#f0e5e8" d="M5 0h3v1H5z"/>
+
+      <!-- Head -->
+      <path fill="#dc354c" d="M2 3h9v6H2z"/>
+      <path fill="#ee7c8b" d="M3 3h7v1H3z"/>
+
+      <!-- Eyes -->
+      <path fill="#f0e5e8" d="M4 5h2v2H4zM8 5h2v2H8z"/>
+      <path fill="#10090c" d="M5 5h1v1H5zM9 5h1v1H9z"/>
+
+      <!-- Body and arms -->
+      <path fill="#dc354c" d="M3 10h7v4H3z"/>
+      <path fill="#ee7c8b" d="M0 10h2v3H0zM11 10h2v3h-2z"/>
+      <path fill="#f0e5e8" d="M5 11h3v1H5z"/>
+
+      <!-- Feet -->
+      <path fill="#ee7c8b" d="M3 14h2v2H3zM8 14h2v2H8z"/>
+    </svg>
+  `;
+
+  menu.appendChild(robot);
+
+  let selected =
+    links.find(link => link.hash === location.hash) ||
+    links.find(link => link.classList.contains("active")) ||
+    links[0];
+
+  let stopWalking;
+  let clickLockUntil = 0;
+
+  function moveRobot(link, animate = true) {
+    selected = link;
+
+    const menuRect = menu.getBoundingClientRect();
+    const linkRect = link.getBoundingClientRect();
+
+    const x = linkRect.left - menuRect.left + 3;
+    const y =
+      linkRect.top - menuRect.top +
+      (linkRect.height - 32) / 2;
+
+    if (!animate) robot.style.transition = "none";
+
+    robot.style.transform = `translate(${x}px, ${y}px)`;
+
+    clearTimeout(stopWalking);
+    robot.classList.toggle("walking", animate);
+
+    if (animate) {
+      stopWalking = setTimeout(() => {
+        robot.classList.remove("walking");
+      }, 650);
+    } else {
+      // Apply the initial position without flying in.
+      void robot.offsetWidth;
+      robot.style.transition = "";
+    }
+  }
+
+  links.forEach(link => {
+    link.addEventListener("click", () => {
+      // Avoid following intermediate sections during smooth scrolling.
+      clickLockUntil = performance.now() + 1000;
+      moveRobot(link);
+    });
+  });
+
+  // Follow the active section set by your existing navigation code.
+  const observer = new MutationObserver(() => {
+    if (performance.now() < clickLockUntil) return;
+
+    const active = links.find(link =>
+      link.classList.contains("active")
+    );
+
+    if (active && active !== selected) {
+      moveRobot(active);
+    }
+  });
+
+  links.forEach(link => {
+    observer.observe(link, {
+      attributes: true,
+      attributeFilter: ["class"]
+    });
+  });
+
+  // Keep alignment when the menu wraps on smaller screens.
+  const resizeObserver = new ResizeObserver(() => {
+    moveRobot(selected, false);
+  });
+
+  resizeObserver.observe(menu);
+
+  document.fonts.ready.then(() => {
+    moveRobot(selected, false);
+  });
+
+  moveRobot(selected, false);
+})();
